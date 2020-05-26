@@ -1,10 +1,10 @@
 ---
-PROJECT: 
+PROJECT: Intention Timer
 PROGRAM: TURING FE
-TERM: MOD 1b
+TERM: MOD 1b #2005
 DATE: 00/00/2020
-TEAM: 
-MEMBER(s): 
+TEAM: group project
+MEMBER(s): Tyler Haglund, Josh Sevy, Suzanne Wolf - Casey
 file name: greenbergKU's PR TEMPLATE
 file title: GENERAL PULL REQUEST TEMPLATE
 ---

@@ -1,30 +1,26 @@
 ---
-PROJECT: 
+PROJECT: Intention Timer
 PROGRAM: TURING FE
-TERM: MOD 1b
-DATE: 00/00/2020
-TEAM: 
-MEMBER(s): 
+TERM: MOD 1b #2005
+DATE: 05/26/2020
+TEAM: group project
+MEMBER(s): Tyler Haglund, Josh Sevy, Suzanne Wolf - Casey
+
 file name: greenbergKU's README template
 ---
 ---
 # PROJECT NAME: type project
-![Leta's slack profile picture (small)](https://ca.slack-edge.com/T029P2S9M-U37MJAV0T-007ccf2f5eb2-85)
+
 ![Casey](https://ca.slack-edge.com/T029P2S9M-U6VMF6L85-fa69b231d590-85) 
-![Scott](https://ca.slack-edge.com/T029P2S9M-UJ910QEJF-7244f37f7e12-85)
+![Sue's slack profile picture (sz85)](https://ca.slack-edge.com/T029P2S9M-UTPTTDE84-13b671276cf8-85)
+![Tyler's slack profile picture (sz85)](https://ca.slack-edge.com/T029P2S9M-UUS7SUX96-a104221ba8d9-85)
+![Josh's slack profile picture (sz85)](https://ca.slack-edge.com/T029P2S9M-UUGQZ6T45-e68735ceecdf-85)
 
-![Sue's slack profile picture (small)](https://ca.slack-edge.com/T029P2S9M-UTPTTDE84-13b671276cf8-85)
-![name](https://ca.slack-edge.com/T029P2S9M-UTPTTDE84-13b671276cf0-85)
-![name](https://ca.slack-edge.com/T029P2S9M-UTPTTDE84-13b671276cf0-85)
 
-* project manager: __Leta__ [(GitHub profile)](https://github.com/turingschool-examples)
 * project manager: __Casey__ [(github)](https://github.com/turingschool-examples)
-* project manager: __Scott__ [(github)](https://github.com/turingschool-examples)
-
-
 * contributer: __Sue__ [(GitHub profile)](https://github.com/GreenbergKU)
-* contributer: __`${username}`__ <[(github)](https://github.com/`${username}`)>
-* contributer: __`${username}`__ <[(github)](https://github.com/`${username}`)>
+* contributer: __Tyler__ <[(github)](https://github.com/)>
+* contributer: __Josh__ <[(github)](https://github.com/JoshSevy)>
 ---
 ---
 
