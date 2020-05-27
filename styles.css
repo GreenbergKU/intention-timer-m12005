@@ -1,0 +1,48 @@
+body{
+  display: grid;
+  grid-template-columns:
+}
+
+.new-activity{
+  
+}
+form {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: minmax(50px, auto);
+  grid-template-areas:
+  ". task-label task-label task-label task-label task-label task-label task-label ."
+  ". task-input task-input task-input task-input task-input task-input task-input ."
+  ". . . . . . . . ."
+  ". minute-label minute-label minute-label . second-label second-label second-label ."
+  ". minute-input minute-input minute-input . second-input second-input second-input ."
+  ". . . . . . . . ."
+  ". . . . . . start-activity start-activity ."
+}
+
+.task-label {
+  grid-area: task-label;
+}
+
+#task-input {
+  grid-area: task-input;
+}
+
+.minute-label {
+  grid-area: minute-label;
+}
+
+#minute-input {
+  grid-area: minute-input;
+}
+
+.second-label {
+  grid-area: second-label;
+}
+
+#second-input {
+  grid-area: second-input;
+}
+#start-activity-button {
+  grid-area: start-activity;
+}
