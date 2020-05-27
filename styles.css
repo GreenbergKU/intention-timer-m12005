@@ -1,29 +1,52 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
+
+body {
+  background-color: #2B2733;
+  color: #CBC9CF;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  color: #FFF;
+  font-size: 1em;
+  padding-top: 1em;
+}
+
+.logos {
+  width: 1.5em;
+  height: auto;
+}
+
 
 main {
     display: flex;
-    width: 100%;   
+    width: 100%;
 }
 
 header {
-    height: 10vh;
+    height: 5vh;
     text-align: center;
-    width: 100%;   
+    width: 100%;
+    background-color: #46424D;
 }
 
 
 .new-activity {
-    background-color: black;
+    background-color: #2B2733;
     color: white;
     width: 70%;
 }
 
 .past-activity {
     display: grid;
-    background-color: cyan;
+    background-color: #2B2733;
     width: 30%;
+    border-left: 3px solid #46424D;
 }
 
 form {
@@ -43,6 +66,11 @@ form {
     ". . . . . . start-activity start-activity ."
 }
 
+input {
+  border: none;
+  border-bottom: 1px solid #CBC9CF;
+}
+
 .category-choice {
   grid-area: category-choice;
   display: grid;
@@ -59,14 +87,33 @@ form {
 
 #stud-button {
   grid-area: stud-button;
+  display: inline;
+  border-radius: 4%;
+  width: 8em;
+  height: 3.5em;
+  background-color: transparent;
+  color: #CBC9CF;
+
 }
 
 #med-button {
   grid-area: med-button;
+  display: inline;
+  border-radius: 4%;
+  width: 8em;
+  height: 3.5em;
+  background-color: transparent;
+  color: #CBC9CF;
 }
 
 #ex-button {
   grid-area: ex-button;
+  display: inline;
+  border-radius: 4%;
+  width: 8em;
+  height: 3.5em;
+  background-color: transparent;
+  color: #CBC9CF;
 }
 
 .task-label {
@@ -75,6 +122,9 @@ form {
 
 #task-input {
   grid-area: task-input;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #CBC9CF;
 }
 
 .minute-label {
@@ -83,6 +133,9 @@ form {
 
 #minute-input {
   grid-area: minute-input;
+  border: none;
+  border-bottom: 1px solid #CBC9CF;
+  background-color: transparent;
 }
 
 .second-label {
@@ -91,9 +144,13 @@ form {
 
 #second-input {
   grid-area: second-input;
+  border: none;
+  border-bottom: 1px solid #CBC9CF;
+  background-color: transparent;
 }
 
 #start-activity-button {
   grid-area: start-activity;
+  width: 14em;
+  height: 2em;
 }
-
