@@ -1,3 +1,4 @@
+<!DOCTYPEhtml>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -6,4 +7,42 @@
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <title>INTENTON TIMER group project: FE mod1 #2005</title>
   </head>    
+<body>
+  <header>
+    <h1>INTENTION TIMER</h1>
+  </header>
+  <section class="new-activity">
+    <h2>New Activity</h2>
+    <div class="category-choice">
+      <p>Select a Catagory:</p>
+      <button type="button" name="study">
+        <img src="" alt="">
+        <p>Study</p>
+      </button>
+      <button type="button" name="meditate">
+        <img src="" alt="">
+        <p>Meditate</p>
+      </button>
+      <button type="button" name="exercise">
+        <img src="" alt="">
+        <p>Exercise</p>
+      </button>
+    </div>
+    <form>
+      <label for="task">What would you like to accomplish during this time?</label>
+      <input type="text" name="task" id="task-input">
+      <label for="minutes">Minutes</label>
+      <input type="text" name="minutes" id="minute-input">
+      <label for="seconds">Seconds</label>
+      <input type="text" name="seconds" id="second-input">
+      <button type="submit" name="start">START ACTIVITY</button>
+    </form>
+    <section class="past-activity">
+      <h2>Past Activity</h2>
+      <article class="activity-cards">
+        <p>You haven't logged any activites yet.<br>Complete the form to the right to get started.</p>
+      </article>
+    </section>
+  </section>
+</body>
 </html>
