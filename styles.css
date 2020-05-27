@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #2B2733;
+  color: #CBC9CF;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  background-color: #46424D;
+  color: #FFF;
+  height: 5em;
+  font-size: .5em;
+}
+
+button {
+  display: inline;
+  border-radius: 4%;
+  width: 8em;
+  height: 3.5em;
+  background-color: transparent;
+  color: #CBC9CF;
+
+}
+
+.logos {
+  width: 1.5em;
+  height: auto;
+}
+
+.past-activity {
+  position: inherit;
+  border-left: 1em;
+}
