@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    width: 100%;   
+}
+
+header {
+    height: 10vh;
+    text-align: center;
+    width: 100%;   
+}
+
+
+.new-activity {
+    background-color: black;
+    color: white;
+    width: 70%;
+}
+
+.past-activity {
+    display: grid;
+    background-color: cyan;
+    width: 30%;
+}
