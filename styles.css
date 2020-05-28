@@ -40,6 +40,7 @@ h2 {
   background-color: #2B2733;
   color: #FFF;
   width: 70%;
+
 }
 
 .past-activity {
@@ -129,7 +130,6 @@ form {
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #CBC9CF;
-
 }
 
 #task-input {
