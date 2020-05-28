@@ -17,11 +17,14 @@ h1 {
   height: auto;
 }
 
+body {
+  background-color: #2B2733;
+  color: #CBC9CF;
+}
+
 main {
   display: flex;
   width: 100%;
-  background-color: #2B2733;
-  color: #CBC9CF;
 }
 
 header {
