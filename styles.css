@@ -17,6 +17,10 @@ h1 {
   height: auto;
 }
 
+body, html {
+  height: 100%;
+}
+
 body {
   background-color: #2B2733;
   color: #CBC9CF;
@@ -25,6 +29,7 @@ body {
 main {
   display: flex;
   width: 100%;
+  height: 94vh;
 }
 
 header {
