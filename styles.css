@@ -3,14 +3,9 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-body {
-  background-color: #2B2733;
-  color: #CBC9CF;
-  padding: 0;
-  margin: 0;
-}
 
 h1 {
+  margin: 0;
   text-align: center;
   color: #FFF;
   font-size: 1em;
@@ -18,41 +13,51 @@ h1 {
 }
 
 .logos {
-  width: 1.5em;
+  width: 2em;
   height: auto;
 }
 
-
 main {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
+  background-color: #2B2733;
+  color: #CBC9CF;
 }
 
 header {
-    height: 5vh;
-    text-align: center;
-    width: 100%;
-    background-color: #46424D;
+  height: 3em;
+  text-align: center;
+  width: 100%;
+  background-color: #46424D;
+}
+
+h2 {
+  margin-left: .6em;
 }
 
 
 .new-activity {
-    background-color: #2B2733;
-    color: white;
-    width: 70%;
+  background-color: #2B2733;
+  color: #FFF;
+  width: 70%;
+
 }
 
 .past-activity {
-    display: grid;
-    background-color: #2B2733;
-    width: 30%;
-    border-left: 3px solid #46424D;
+  display: grid;
+  background-color: #2B2733;
+  width: 30%;
+  border-left: 3px solid #46424D;
 }
 
 form {
+  padding: 2em 0 2em 0;
+  border-radius: 1%;
+  background-color: #46424D;
+  margin: 1em;
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  grid-auto-rows: minmax(50px, auto);
+  grid-auto-rows: minmax(40px, auto);
   grid-template-areas:
     ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
     ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
@@ -66,12 +71,13 @@ form {
     ". . . . . . start-activity start-activity ."
 }
 
-input {
-  border: none;
-  border-bottom: 1px solid #CBC9CF;
+.category-choice p {
+  font-size: .9em;
+
 }
 
 .category-choice {
+  padding-bottom: 2em;
   grid-area: category-choice;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
@@ -85,57 +91,61 @@ input {
   grid-area: select-cat;
 }
 
-#stud-button {
-  grid-area: stud-button;
+#stud-button,
+#med-button,
+#ex-button {
   display: inline;
   border-radius: 4%;
-  width: 8em;
-  height: 3.5em;
+  border-width: .15em;
+  width: 12em;
+  height: 5em;
   background-color: transparent;
   color: #CBC9CF;
+}
 
+#stud-button {
+  grid-area: stud-button;
+  justify-self: start;
 }
 
 #med-button {
   grid-area: med-button;
-  display: inline;
-  border-radius: 4%;
-  width: 8em;
-  height: 3.5em;
-  background-color: transparent;
-  color: #CBC9CF;
+  justify-self: center;
+
 }
 
 #ex-button {
   grid-area: ex-button;
-  display: inline;
-  border-radius: 4%;
-  width: 8em;
-  height: 3.5em;
-  background-color: transparent;
-  color: #CBC9CF;
+  justify-self: end;
+
 }
 
 .task-label {
   grid-area: task-label;
 }
 
-#task-input {
-  grid-area: task-input;
+#task-input,
+#minute-input,
+#second-input {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #CBC9CF;
+  border-bottom: 2px solid #CBC9CF;
 }
 
+#task-input {
+  grid-area: task-input;
+}
+
+label {
+  align-self: end;
+}
 .minute-label {
   grid-area: minute-label;
+
 }
 
 #minute-input {
   grid-area: minute-input;
-  border: none;
-  border-bottom: 1px solid #CBC9CF;
-  background-color: transparent;
 }
 
 .second-label {
@@ -144,13 +154,13 @@ input {
 
 #second-input {
   grid-area: second-input;
-  border: none;
-  border-bottom: 1px solid #CBC9CF;
-  background-color: transparent;
 }
 
 #start-activity-button {
   grid-area: start-activity;
-  width: 14em;
+  border-radius: 4%;
+  align-self: baseline;
   height: 2em;
+  min-width: 10em;
+  justify-self: end;
 }
