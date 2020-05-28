@@ -111,10 +111,25 @@ form {
   color: #CBC9CF;
 }
 
+/* .stud-button,
+.med-button,
+.ex-button {
+  display: inline;
+  border-radius: 4%;
+  border-width: .15em;
+  width: 12em;
+  height: 5em;
+  background-color: transparent;
+  color: #CBC9CF;
+ */
+
+
+
 #stud-button {
   grid-area: stud-button;
   justify-self: start;
 }
+
 
 #med-button {
   grid-area: med-button;
