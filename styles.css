@@ -12,10 +12,6 @@ h1 {
   padding-top: 1em;
 }
 
-.logos {
-  width: 2em;
-  height: auto;
-}
 
 body, html {
   height: 100%;
@@ -79,6 +75,9 @@ form {
     ". . . . . . start-activity start-activity ."
 }
 
+input{
+  color: #CBC9CF;
+}
 .category-choice p {
   font-size: .9em;
 
@@ -99,7 +98,7 @@ form {
   grid-area: select-cat;
 }
 
-#stud-button,
+/* #stud-button,
 #med-button,
 #ex-button {
   display: inline;
@@ -109,9 +108,8 @@ form {
   height: 5em;
   background-color: transparent;
   color: #CBC9CF;
-}
-
-/* .stud-button,
+} */
+.stud-button,
 .med-button,
 .ex-button {
   display: inline;
@@ -121,26 +119,47 @@ form {
   height: 5em;
   background-color: transparent;
   color: #CBC9CF;
- */
+  outline: none;
+}
+
+
+.med-color {
+  color: #BE8CE5;
+  border-color: #BE8CE5;
+}
+
+.stud-color {
+  color: #B3FD78;
+  border-color: #B3FD78;
+}
+
+.ex-color {
+  color: #FD9089;
+  border-color: #FD9089;
+}
 
 
 
-#stud-button {
+.stud-button {
   grid-area: stud-button;
   justify-self: start;
 }
 
 
-#med-button {
+.med-button {
   grid-area: med-button;
   justify-self: center;
 
 }
 
-#ex-button {
+.ex-button {
   grid-area: ex-button;
   justify-self: end;
+}
 
+.logos {
+  width: 2em;
+  height: auto;
 }
 
 .task-label {
