@@ -3,7 +3,6 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-
 h1 {
   margin: 0;
   text-align: center;
@@ -11,7 +10,6 @@ h1 {
   font-size: 1em;
   padding-top: 1em;
 }
-
 
 body, html {
   height: 100%;
@@ -39,12 +37,10 @@ h2 {
   margin-left: .6em;
 }
 
-
 .new-activity {
   background-color: #2B2733;
   color: #FFF;
   width: 70%;
-
 }
 
 .past-activity {
@@ -78,9 +74,9 @@ form {
 input{
   color: #CBC9CF;
 }
+
 .category-choice p {
   font-size: .9em;
-
 }
 
 .category-choice {
@@ -98,21 +94,10 @@ input{
   grid-area: select-cat;
 }
 
-/* #stud-button,
-#med-button,
-#ex-button {
-  display: inline;
-  border-radius: 4%;
-  border-width: .15em;
-  width: 12em;
-  height: 5em;
-  background-color: transparent;
-  color: #CBC9CF;
-} */
 .stud-button,
 .med-button,
 .ex-button {
-  display: inline;
+  display: inline-block;
   border-radius: 4%;
   border-width: .15em;
   width: 12em;
@@ -121,7 +106,6 @@ input{
   color: #CBC9CF;
   outline: none;
 }
-
 
 .med-color {
   color: #BE8CE5;
@@ -138,18 +122,14 @@ input{
   border-color: #FD9089;
 }
 
-
-
 .stud-button {
   grid-area: stud-button;
   justify-self: start;
 }
 
-
 .med-button {
   grid-area: med-button;
   justify-self: center;
-
 }
 
 .ex-button {
@@ -160,6 +140,7 @@ input{
 .logos {
   width: 2em;
   height: auto;
+  pointer-events: none;
 }
 
 .task-label {
@@ -181,9 +162,9 @@ input{
 label {
   align-self: end;
 }
+
 .minute-label {
   grid-area: minute-label;
-
 }
 
 #minute-input {

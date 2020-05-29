@@ -58,7 +58,28 @@ newActivitySection.addEventListener('click', function(event) {
 });
 
 
+
+
+
+
+//Validation Formulas
+// function numValidator(x) {
+//   var invalidChar = ['e', 'E', '+', '-'];
+//   if (isNaN(x) && invalidChar.includes(x))
+//     //innerHTML to add error message for correct numbers
+//   }
+// }
 //
+// function textValidator() {
+//   if(//input === "") {
+//     //return innerHTML error message
+//   }
+// }
+//
+// function submit() {
+//   event.preventDefault();
+// }
+
 
 
 //**** studButton comments ****** */
