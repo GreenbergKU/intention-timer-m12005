@@ -4,6 +4,7 @@ var newActivitySection = document.querySelector('.new-activity')
 var studButton = document.querySelector('#stud-button');
 var medButton = document.querySelector('#med-button');
 var exButton = document.querySelector('#ex-button');
+var startButton = document.querySelector('#start-activity-button');
 
 categorySection.addEventListener('click', function(event) {
 
@@ -15,6 +16,7 @@ categorySection.addEventListener('click', function(event) {
   if (studButton.isActive === true) {
     studButton.childNodes[1].src = `./assets/${studButton.name}-active.svg`;
     studButton.classList.add('stud-color');
+    startButton.disabled = false;
   } else {
     studButton.childNodes[1].src = `./assets/${studButton.name}.svg`;
     studButton.classList.remove('stud-color');
@@ -23,6 +25,7 @@ categorySection.addEventListener('click', function(event) {
   if (exButton.isActive === true) {
     exButton.childNodes[1].src = `./assets/${exButton.name}-active.svg`;
     exButton.classList.add('ex-color');
+    startButton.disabled = false;
   } else {
     exButton.childNodes[1].src = `./assets/${exButton.name}.svg`;
     exButton.classList.remove('ex-color');
@@ -31,6 +34,7 @@ categorySection.addEventListener('click', function(event) {
   if (medButton.isActive === true) {
     medButton.childNodes[1].src = `./assets/${medButton.name}-active.svg`;
     medButton.classList.add('med-color');
+    startButton.disabled = false;
   } else {
     medButton.childNodes[1].src = `./assets/${medButton.name}.svg`;
     medButton.classList.remove('med-color');
@@ -38,14 +42,14 @@ categorySection.addEventListener('click', function(event) {
 
 });
 
-newActivitySection.addEventListener('keyup', function(event) {
-  // console.log('hello');
-  var minutesInput = document.querySelector('#minute-input');
-  var secondsInput = document.querySelector('#second-input');
-  if (parseInt(minutesInput.value) != '' /* && parseInt(secondsInput.value) !== NaN*/) {
-    console.log('not e');
-  };
-});
+// newActivitySection.addEventListener('keyup', function(event) {
+//   // console.log('hello');
+//   var minutesInput = document.querySelector('#minute-input');
+//   var secondsInput = document.querySelector('#second-input');
+//   if (parseInt(minutesInput.value) != '' /* && parseInt(secondsInput.value) !== NaN*/) {
+//     console.log('not e');
+//   };
+// });
 
 
 //
