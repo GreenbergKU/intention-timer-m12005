@@ -1,4 +1,5 @@
 var categorySection = document.querySelector('.category-choice');
+var newActivitySection = document.querySelector('.new-activity')
 
 var studButton = document.querySelector('#stud-button');
 var medButton = document.querySelector('#med-button');
@@ -37,7 +38,14 @@ categorySection.addEventListener('click', function(event) {
 
 });
 
-
+newActivitySection.addEventListener('keyup', function(event) {
+  // console.log('hello');
+  var minutesInput = document.querySelector('#minute-input');
+  var secondsInput = document.querySelector('#second-input');
+  if (parseInt(minutesInput.value) != '' /* && parseInt(secondsInput.value) !== NaN*/) {
+    console.log('not e');
+  };
+});
 
 
 //
