@@ -13,25 +13,31 @@ categorySection.addEventListener('click', function(event) {
 
   if (studButton.isActive === true) {
     studButton.childNodes[1].src = `./assets/${studButton.name}-active.svg`;
+    studButton.classList.add('stud-color');
   } else {
     studButton.childNodes[1].src = `./assets/${studButton.name}.svg`;
-  }
+    studButton.classList.remove('stud-color');
+  };
 
   if (exButton.isActive === true) {
     exButton.childNodes[1].src = `./assets/${exButton.name}-active.svg`;
+    exButton.classList.add('ex-color');
   } else {
     exButton.childNodes[1].src = `./assets/${exButton.name}.svg`;
-  }
+    exButton.classList.remove('ex-color');
+  };
 
   if (medButton.isActive === true) {
     medButton.childNodes[1].src = `./assets/${medButton.name}-active.svg`;
+    medButton.classList.add('med-color');
   } else {
     medButton.childNodes[1].src = `./assets/${medButton.name}.svg`;
-  }
+    medButton.classList.remove('med-color');
+  };
 
-  // var targetName = event.target.name;
-  // studButton.childNodes[1].src = `./assets/${targetName}-active.svg`
-})
+});
+
+
 
 
 //
