@@ -5,8 +5,10 @@ var studButton = document.querySelector('#stud-button');
 var medButton = document.querySelector('#med-button');
 var exButton = document.querySelector('#ex-button');
 var startButton = document.querySelector('#start-activity-button');
+var currentActivity;
 
 categorySection.addEventListener('click', function(event) {
+
 
   studButton.isActive = event.target.id === studButton.id;
   exButton.isActive = event.target.id === exButton.id;
@@ -42,14 +44,18 @@ categorySection.addEventListener('click', function(event) {
 
 });
 
-// newActivitySection.addEventListener('keyup', function(event) {
-//   // console.log('hello');
-//   var minutesInput = document.querySelector('#minute-input');
-//   var secondsInput = document.querySelector('#second-input');
-//   if (parseInt(minutesInput.value) != '' /* && parseInt(secondsInput.value) !== NaN*/) {
-//     console.log('not e');
-//   };
-// });
+newActivitySection.addEventListener('click', function(event) {
+  // function for that start activity button
+  if(event.target.id === startButton.id) {
+    var selectedCategory = 'Study';
+    var descriptionInput = document.querySelector('#task-input').value;
+    var minuteInput = document.querySelector('#minute-input').value;
+    var secondInput = document.querySelector('#second-input').value;
+    var currentActivity = new Activity(selectedCategory, descriptionInput, minuteInput, secondInput);
+    debugger;
+    console.log('test');
+  }
+});
 
 
 //

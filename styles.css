@@ -155,14 +155,13 @@ input{
 .ex-button {
   grid-area: ex-button;
   justify-self: end;
-
 }
 
 .logos {
   width: 2em;
   height: auto;
-  z-index: -1;
 }
+
 .task-label {
   grid-area: task-label;
 }
