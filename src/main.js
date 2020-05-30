@@ -3,38 +3,27 @@ var newActivitySection = document.querySelector('.new-activity');
 
 var startButton = document.querySelector('#start-activity-button');
 
-var currentActivity;
+var currentActivity = new Activity;
 var savedActivites = [];
 
 categorySection.addEventListener('click', function(event) {
 
     for (var i = 1; i < categorySection.children.length; i++) {
-        var categoryChild = categorySection.children[i];      
+        var categoryChild = categorySection.children[i];
         if (categoryChild.id === event.target.id) {
             categoryChild.isActive = true;
+
+            currentActivity.catagory = event.target.name;
+
             categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
             categoryChild.classList.add(`${categoryChild.name}-color`);
-        } else { 
+        } else {
             categoryChild.isActive = false;
             categoryChild.childNodes[1].src = `./assets/${categoryChild.name}.svg`;
             categoryChild.classList.remove(`${categoryChild.name}-color`);
-        };    
+        };
   }
-});   
-
-
-// newActivitySection.addEventListener('click', function(event) {
-//   // function for that start activity button
-//   if(event.target.id === startButton.id) {
-//     var selectedCategory = 'Study';
-//     var descriptionInput = document.querySelector('#task-input').value;
-//     var minuteInput = document.querySelector('#minute-input').value;
-//     var secondInput = document.querySelector('#second-input').value;
-//     var currentActivity = new Activity(selectedCategory, descriptionInput, minuteInput, secondInput);
-//     console.log(event.target);
-//   }
-// });
-
+});
 
 var form = document.getElementById('form');
 var task = document.getElementById('task-input');
@@ -48,6 +37,7 @@ form.addEventListener('submit',function(event) {
 });
 
 function inputValidation() {
+  var buttonValue = currentActivity.catagory;
   var taskValue = task.value.trim();
   var minuteValue = minuteInput.value.trim();
   var secondValue = secondInput.value.trim();
@@ -56,6 +46,7 @@ function inputValidation() {
     errorMessage(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
   } else {
     success(task);
+    currentActivity = new Activity(buttonValue, task.value, minuteInput.value, secondInput.value);
   }
 }
 
@@ -67,7 +58,6 @@ function errorMessage (input, message){
   formError.className = 'form error-message';
 }
 
-
 function success(input) {
   var formError = input.parentElement;
   var addError = form.querySelector('small');
@@ -76,11 +66,9 @@ function success(input) {
   formError.className = 'form';
 }
 
-
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
   if(!(/[0-9]/.test(charNum))){
     event.preventDefault();
   }
 }
-
