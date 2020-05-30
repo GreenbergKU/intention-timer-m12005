@@ -3,15 +3,14 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-
 h1 {
   margin: 0;
   text-align: center;
   color: #FFF;
   font-size: 1em;
   padding-top: 1em;
+  font-weight: bold;
 }
-
 
 body, html {
   height: 100%;
@@ -22,12 +21,6 @@ body {
   color: #CBC9CF;
 }
 
-main {
-  display: flex;
-  width: 100%;
-  height: 94vh;
-}
-
 header {
   height: 3em;
   text-align: center;
@@ -35,27 +28,25 @@ header {
   background-color: #46424D;
 }
 
+main {
+  display: flex;
+  width: 100%;
+  height: 94vh;
+}
+
 h2 {
   margin-left: .6em;
 }
-
 
 .new-activity {
   background-color: #2B2733;
   color: #FFF;
   width: 70%;
-
-}
-
-.past-activity {
-  display: grid;
-  background-color: #2B2733;
-  width: 30%;
-  border-left: 3px solid #46424D;
 }
 
 form {
   padding: 2em 0 2em 0;
+  height: 85vh;
   border-radius: 1%;
   background-color: #46424D;
   margin: 1em;
@@ -77,10 +68,28 @@ form {
 
 input{
   color: #CBC9CF;
+  outline: none;
+  height: 2em;
 }
-.category-choice p {
-  font-size: .9em;
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.error-message {
+  border-color: #BE8CE5;
+  visibility: visible;
+}
+
+.category-choice p {
+  font-size: 1em;
 }
 
 .category-choice {
@@ -98,76 +107,44 @@ input{
   grid-area: select-cat;
 }
 
-/* #stud-button,
-#med-button,
-#ex-button {
-  display: inline;
-  border-radius: 4%;
-  border-width: .15em;
-  width: 12em;
-  height: 5em;
-  background-color: transparent;
-  color: #CBC9CF;
-} */
 .stud-button,
 .med-button,
 .ex-button {
-  display: inline;
+  display: inline-block;
+  border-color: #CBC9CF;
   border-radius: 4%;
   border-width: .15em;
   width: 12em;
   height: 5em;
   background-color: transparent;
+  font-weight: 400;
   color: #CBC9CF;
   outline: none;
 }
-
-
-.med-color {
-  color: #BE8CE5;
-  border-color: #BE8CE5;
-}
-
-.stud-color {
-  color: #B3FD78;
-  border-color: #B3FD78;
-}
-
-.ex-color {
-  color: #FD9089;
-  border-color: #FD9089;
-}
-
-/*********** CHANGED TO FULL NAME ************/
 
 .meditate-color {
   color: #BE8CE5;
   border-color: #BE8CE5;
 }
-  
+
 .study-color {
   color: #B3FD78;
   border-color: #B3FD78;
 }
-  
+
 .exercise-color {
   color: #FD9089;
   border-color: #FD9089;
 }
-
-/*********** CHANGED TO FULL NAME ************/
-
 
 .stud-button {
   grid-area: stud-button;
   justify-self: start;
 }
 
-
 .med-button {
   grid-area: med-button;
   justify-self: center;
-
 }
 
 .ex-button {
@@ -177,6 +154,21 @@ input{
 
 .logos {
   width: 2em;
+  height: auto;
+  pointer-events: none;
+}
+
+small {
+  grid-area: task-input;
+  position: relative;
+  top: 3.5em;
+  font-size: 1em;
+  color: #EFB7EC;
+
+}
+
+.warning {
+  width: 1em;
   height: auto;
 }
 
@@ -194,14 +186,15 @@ input{
 
 #task-input {
   grid-area: task-input;
+
 }
 
 label {
   align-self: end;
 }
+
 .minute-label {
   grid-area: minute-label;
-
 }
 
 #minute-input {
@@ -223,4 +216,11 @@ label {
   height: 2em;
   min-width: 10em;
   justify-self: end;
+}
+
+.past-activity {
+  display: grid;
+  background-color: #2B2733;
+  width: 30%;
+  border-left: 3px solid #46424D;
 }

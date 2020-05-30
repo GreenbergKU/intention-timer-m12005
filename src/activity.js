@@ -6,10 +6,18 @@ class Activity {
         this.minutes = minutes;
         this.seconds = seconds;
         this.isCompleted = false;
-       
-    }
-    // startTimer()
-    // markComplete()
-    // saveToStorage()
-    // 
+
+     }
+
+     startTimer() {
+
+     }
+
+     markComplete() {
+
+     }
+
+     saveToStorage() {
+
+     }
 }
