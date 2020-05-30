@@ -138,6 +138,24 @@ input{
   border-color: #FD9089;
 }
 
+/*********** CHANGED TO FULL NAME ************/
+
+.meditate-color {
+  color: #BE8CE5;
+  border-color: #BE8CE5;
+}
+  
+.study-color {
+  color: #B3FD78;
+  border-color: #B3FD78;
+}
+  
+.exercise-color {
+  color: #FD9089;
+  border-color: #FD9089;
+}
+
+/*********** CHANGED TO FULL NAME ************/
 
 
 .stud-button {
