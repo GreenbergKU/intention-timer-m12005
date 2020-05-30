@@ -1,6 +1,5 @@
 <!DOCTYPEhtml>
   <html lang="en">
-
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,6 @@
     </style>
     <title>Intention Timer</title>
   </head>
-
   <body>
     <header>
       <h1>INTENTION TIMER</h1>
@@ -19,7 +17,7 @@
     <main>
       <section class="new-activity">
         <h2>New Activity</h2>
-        <form>
+        <form class="form" id="form">
           <div class="category-choice">
             <p>Select a Catagory:</p>
             <button class="stud-button" type="button" name="study"  id="stud-button">
@@ -33,12 +31,15 @@
             </button>
           </div>
           <label for="task" class="task-label">What would you like to accomplish during this time?</label>
-          <input type="text" name="task" id="task-input" required>
+          <input type="text" name="task" id="task-input">
+          <small></small>
           <label for="minutes" class="minute-label">Minutes</label>
-          <input type="number" name="minutes" id="minute-input" required>
+          <input type="text" name="minutes" id="minute-input">
+          <small></small>
           <label for="seconds" class="second-label">Seconds</label>
-          <input type="number" name="seconds" id="second-input" required>
-          <button type="submit" name="start" id="start-activity-button" disabled>START ACTIVITY</button>
+          <input type="number" name="seconds" id="second-input">
+          <small></small>
+          <button type="submit" name="start" id="start-activity-button">START ACTIVITY</button>
         </form>
       </section>
       <section class="past-activity">
