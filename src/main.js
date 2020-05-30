@@ -3,7 +3,9 @@ var newActivitySection = document.querySelector('.new-activity');
 
 var startButton = document.querySelector('#start-activity-button');
 
-var savedActivities = [];
+
+var currentActivity;
+var savedActivites = [];
 
 var currentActivity = new Activity;
 
@@ -28,7 +30,6 @@ categorySection.addEventListener('click', function(event) {
 }});
 
 // categorySection.addEventListener('click', function(event) {
-
 //   studButton.isActive = event.target.id === studButton.id;
 //   exButton.isActive = event.target.id === exButton.id;
 //   medButton.isActive = event.target.id === medButton.id;
@@ -41,7 +42,7 @@ categorySection.addEventListener('click', function(event) {
 //     studButton.childNodes[1].src = `./assets/${studButton.name}.svg`;
 //     studButton.classList.remove('stud-color');
 //   };
-
+//
 //   if (exButton.isActive === true) {
 //     exButton.childNodes[1].src = `./assets/${exButton.name}-active.svg`;
 //     exButton.classList.add('ex-color');
@@ -50,7 +51,7 @@ categorySection.addEventListener('click', function(event) {
 //     exButton.childNodes[1].src = `./assets/${exButton.name}.svg`;
 //     exButton.classList.remove('ex-color');
 //   };
-
+//
 //   if (medButton.isActive === true) {
 //     medButton.childNodes[1].src = `./assets/${medButton.name}-active.svg`;
 //     medButton.classList.add('med-color');
@@ -58,9 +59,22 @@ categorySection.addEventListener('click', function(event) {
 //   } else {
 //     medButton.childNodes[1].src = `./assets/${medButton.name}.svg`;
 //     medButton.classList.remove('med-color');
+//     console.log(event.target);
 //   };
 // });
-// *********^^* DON'T NEED THESE UNLESS USED ELSEWHERE *^^**********
+
+// newActivitySection.addEventListener('click', function(event) {
+//   // function for that start activity button
+//   if(event.target.id === startButton.id) {
+//     var selectedCategory = 'Study';
+//     var descriptionInput = document.querySelector('#task-input').value;
+//     var minuteInput = document.querySelector('#minute-input').value;
+//     var secondInput = document.querySelector('#second-input').value;
+//     var currentActivity = new Activity(selectedCategory, descriptionInput, minuteInput, secondInput);
+//     console.log(event.target);
+//   }
+// });
+
 
 var form = document.getElementById('form');
 var task = document.getElementById('task-input');
