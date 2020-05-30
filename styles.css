@@ -122,29 +122,16 @@ input[type=number] {
   outline: none;
 }
 
-.med-color {
-  color: #BE8CE5;
-  border-color: #BE8CE5;
-}
-
-.stud-color {
-  color: #B3FD78;
-  border-color: #B3FD78;
-}
-
-.ex-color {
-  color: #FD9089;
-  border-color: #FD9089;
-}
-
 .meditate-color {
   color: #BE8CE5;
   border-color: #BE8CE5;
 }
+
 .study-color {
   color: #B3FD78;
   border-color: #B3FD78;
 }
+
 .exercise-color {
   color: #FD9089;
   border-color: #FD9089;
