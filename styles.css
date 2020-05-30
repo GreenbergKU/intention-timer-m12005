@@ -224,3 +224,46 @@ label {
   width: 30%;
   border-left: 3px solid #46424D;
 }
+
+.hidden {
+  display: none;
+}
+
+.current-activity {
+ text-align: center;
+ padding: 2em 0 2em 0;
+ border-radius: 1%;
+ background-color: #46424D;
+ margin: 1em;
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ grid-auto-rows: minmax(50px, auto);
+}
+
+h3 {
+  font-size: 1.4em;
+  margin-bottom: 0;
+  grid-area: 1/2/2/3;
+}
+
+.time {
+  font-size: 5em;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: .65em;
+  grid-area: 2/2/3/3;
+}
+
+.start-time {
+  background-color: #46424D;
+  color: #CBC9CF;
+  border: 3px solid white;
+  border-radius: 90%;
+  grid-area: 3/2/4/3;
+  width: 9em;
+  height: 9em;
+  justify-self: center;
+  font-size: 1.6em;
+  margin-bottom: 1.5em;
+  outline: none;
+}
