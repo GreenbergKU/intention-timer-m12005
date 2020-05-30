@@ -95,8 +95,8 @@ function inputValidation() {
   var minuteValue = minuteInput.value.trim();
   var secondValue = secondInput.value.trim();
 
-  if(taskValue === ""){
-    errorMessage(task, '<img class="warning" src="assets/warning.svg"> Please Enter A Task!');
+  if(taskValue === "" || minuteValue === "" || secondValue === "") {
+    errorMessage(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
   } else {
     success(task);
   }
@@ -112,9 +112,19 @@ function errorMessage (input, message){
 
 function success(input) {
   var formError = input.parentElement;
+  var addError = form.querySelector('small');
+
+  addError.innerHTML = '';
   formError.className = 'form';
 }
 
+
+function isNumber(event) {
+  var charNum = String.fromCharCode(event.which);
+  if(!(/[0-9]/.test(charNum))){
+    event.preventDefault();
+  }
+}
 //**** studButton comments ****** */
 
 // Changes button image if clicked

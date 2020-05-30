@@ -71,6 +71,17 @@ input{
   outline: none;
   height: 2em;
 }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 .error-message {
   border-color: #BE8CE5;
@@ -159,10 +170,14 @@ input{
   height: auto;
   pointer-events: none;
 }
+
 small {
-  position: absolute;
-  top: 40em;
-  left: 10em;
+  grid-area: task-input;
+  position: relative;
+  top: 3.5em;
+  font-size: 1em;
+  color: #EFB7EC;
+
 }
 
 .warning {
@@ -184,6 +199,7 @@ small {
 
 #task-input {
   grid-area: task-input;
+
 }
 
 label {
