@@ -1,8 +1,82 @@
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
 }
 
+/*Grid layout */
+form {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: minmax(40px, auto);
+  grid-template-areas:
+    ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
+    ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
+    ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
+    ". task-label task-label task-label task-label task-label task-label task-label ."
+    ". task-input task-input task-input task-input task-input task-input task-input ."
+    ". . . . . . . . ."
+    ". minute-label minute-label minute-label . second-label second-label second-label ."
+    ". minute-input minute-input minute-input . second-input second-input second-input ."
+    ". . . . . . . . ."
+    ". . . . . . start-activity start-activity ."
+}
+
+.category-choice {
+  padding-bottom: 2em;
+  grid-area: category-choice;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-areas:
+  "select-cat select-cat select-cat . . . . ."
+  "stud-button stud-button . med-button med-button . ex-button ex-button"
+  "stud-button stud-button . med-button med-button . ex-button ex-button"
+  ". . . . . . . ."
+}
+
+.category-choice p {
+  grid-area: select-cat;
+  font-size: 1em;
+}
+
+.stud-button {
+  grid-area: stud-button;
+  justify-self: start;
+}
+
+.med-button {
+  grid-area: med-button;
+  justify-self: center;
+}
+
+.ex-button {
+  grid-area: ex-button;
+  justify-self: end;
+}
+
+.task-label {
+  grid-area: task-label;
+}
+
+.task-input {
+  grid-area: task-input;
+}
+
+.minute-label {
+  grid-area: minute-label;
+}
+
+.minute-input {
+  grid-area: minute-input;
+}
+
+.second-label {
+  grid-area: second-label;
+}
+
+.second-input {
+  grid-area: second-input;
+}
+
+/* Styling */
 h1 {
   margin: 0;
   text-align: center;
@@ -17,6 +91,7 @@ body, html {
 }
 
 body {
+  font-family: 'Montserrat', sans-serif;
   background-color: #2B2733;
   color: #CBC9CF;
 }
@@ -50,20 +125,18 @@ form {
   border-radius: 1%;
   background-color: #46424D;
   margin: 1em;
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-auto-rows: minmax(40px, auto);
-  grid-template-areas:
-    ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
-    ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
-    ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
-    ". task-label task-label task-label task-label task-label task-label task-label ."
-    ". task-input task-input task-input task-input task-input task-input task-input ."
-    ". . . . . . . . ."
-    ". minute-label minute-label minute-label . second-label second-label second-label ."
-    ". minute-input minute-input minute-input . second-input second-input second-input ."
-    ". . . . . . . . ."
-    ". . . . . . start-activity start-activity ."
+}
+
+.task-input,
+.minute-input,
+.second-input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid #CBC9CF;
+}
+
+label {
+  align-self: end;
 }
 
 input{
@@ -71,6 +144,7 @@ input{
   outline: none;
   height: 2em;
 }
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -83,74 +157,16 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.error-message {
-  border-color: #BE8CE5;
-  visibility: visible;
-}
-
-.category-choice p {
-  font-size: 1em;
-}
-
-.category-choice {
-  padding-bottom: 2em;
-  grid-area: category-choice;
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-areas:
-  "select-cat select-cat select-cat . . . . ."
-  "stud-button stud-button . med-button med-button . ex-button ex-button"
-  "stud-button stud-button . med-button med-button . ex-button ex-button"
-  ". . . . . . . ."
-}
-.category-choice p {
-  grid-area: select-cat;
-}
-
-.stud-button,
-.med-button,
-.ex-button {
-  display: inline-block;
-  border-color: #CBC9CF;
-  border-radius: 4%;
-  border-width: .15em;
-  width: 12em;
-  height: 5em;
-  background-color: transparent;
-  font-weight: 400;
-  color: #CBC9CF;
-  outline: none;
-}
-
-
-.stud-button {
-  grid-area: stud-button;
-  justify-self: start;
-}
-
-.med-button {
-  grid-area: med-button;
-  justify-self: center;
-}
-
-.ex-button {
-  grid-area: ex-button;
-  justify-self: end;
-}
-
-.logos {
-  width: 2em;
-  height: auto;
-  pointer-events: none;
-}
-
 small {
   grid-area: task-input;
   position: relative;
   top: 3.5em;
   font-size: 1em;
   color: #EFB7EC;
+}
 
+.error-message {
+  border-color: #BE8CE5;
 }
 
 .warning {
@@ -158,44 +174,7 @@ small {
   height: auto;
 }
 
-.task-label {
-  grid-area: task-label;
-}
-
-#task-input,
-#minute-input,
-#second-input {
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid #CBC9CF;
-}
-
-#task-input {
-  grid-area: task-input;
-
-}
-
-label {
-  align-self: end;
-}
-
-.minute-label {
-  grid-area: minute-label;
-}
-
-#minute-input {
-  grid-area: minute-input;
-}
-
-.second-label {
-  grid-area: second-label;
-}
-
-#second-input {
-  grid-area: second-input;
-}
-
-#start-activity-button {
+.start-button {
   grid-area: start-activity;
   border-radius: 4%;
   align-self: baseline;
@@ -203,14 +182,6 @@ label {
   min-width: 10em;
   justify-self: end;
 }
-
-.past-activity {
-  display: grid;
-  background-color: #2B2733;
-  width: 30%;
-  border-left: 3px solid #46424D;
-}
-
 
 .timer-wrapper {
  text-align: center;
@@ -235,7 +206,8 @@ h3 {
 
 .time {
   font-size: 5em;
-  font-weight: 400;
+  font-family: sans-serif;
+  font-weight: bolder;
   margin-top: 0;
   margin-bottom: .65em;
   grid-area: 2/2/3/3;
@@ -255,6 +227,28 @@ h3 {
   outline: none;
 }
 
+.past-activity {
+  display: grid;
+  background-color: #2B2733;
+  width: 30%;
+  border-left: 3px solid #46424D;
+}
+
+.stud-button,
+.med-button,
+.ex-button {
+  display: inline-block;
+  border-color: #CBC9CF;
+  border-radius: 4%;
+  border-width: .15em;
+  width: 12em;
+  height: 5em;
+  background-color: transparent;
+  font-weight: 400;
+  color: #CBC9CF;
+  outline: none;
+}
+
 .study-color {
   color: #B3FD78;
   border-color: #B3FD78;
@@ -265,8 +259,13 @@ h3 {
   border-color: #FD9089;
 }
 
-
 .meditate-color {
   color: #BE8CE5;
   border-color: #BE8CE5;
+}
+
+.logos {
+  width: 2em;
+  height: auto;
+  pointer-events: none;
 }

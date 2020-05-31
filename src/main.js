@@ -27,12 +27,13 @@ categorySection.addEventListener('click', function(event) {
 });
 
 var form = document.getElementById('form');
-var task = document.getElementById('task-input');
-var minuteInput = document.getElementById('minute-input');
-var secondInput = document.getElementById('second-input');
+var task = document.getElementById('task-return');
+var minuteInput = document.getElementById('minute-return');
+var secondInput = document.getElementById('second-return');
 
 form.addEventListener('submit',function(event) {
   event.preventDefault();
+  
   inputValidation();
 });
 
@@ -42,10 +43,10 @@ function inputValidation() {
   var minuteValue = minuteInput.value.trim();
   var secondValue = secondInput.value.trim();
 
-  if(taskValue === "" || minuteValue === "" || secondValue === "") {
+  if(taskValue === "" || minuteValue === "" || secondValue === "" || buttonValue === undefined) {
     errorMessage(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
   } else {
-    currentActivity = new Activity(buttonValue, task.value, minuteInput.value, secondInput.value);
+    currentActivity = new Activity(buttonValue, task.value, parseInt(minuteInput.value), parseInt(secondInput.value));
     success(task);
   };
 };
