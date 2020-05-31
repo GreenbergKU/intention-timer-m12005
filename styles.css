@@ -17,7 +17,7 @@ form {
     ". minute-label minute-label minute-label . second-label second-label second-label ."
     ". minute-input minute-input minute-input . second-input second-input second-input ."
     ". . . . . . . . ."
-    ". . . . . . start-activity start-activity ."
+    ". . . . . . start-activity start-activity .";
 }
 
 .category-choice {
@@ -240,7 +240,7 @@ h3 {
   display: inline-block;
   border-color: #CBC9CF;
   border-radius: 4%;
-  border-width: .15em;
+  border-width: .2em;
   width: 12em;
   height: 5em;
   background-color: transparent;
@@ -268,4 +268,70 @@ h3 {
   width: 2em;
   height: auto;
   pointer-events: none;
+}
+
+@media screen and (max-width: 480px) {
+  main {
+    display: block;
+  }
+
+  h1 {
+    font-size: 1.25em;
+  }
+
+  header {
+    height: 4em;
+  }
+
+  form {
+    padding: 0 1em 2em 0;
+    height: 80vh;
+    /* grid-template-areas:
+      "category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice"
+      "category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice"
+      "category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice"
+      ". task-label task-label task-label task-label task-label task-label task-label ."
+      ". task-input task-input task-input task-input task-input task-input task-input ."
+      ". . . . . . . . ."
+      "minute-label minute-label minute-label minute-label . second-label second-label second-label minute-label"
+      "minute-input minute-input minute-input minute-input . second-input second-input second-input second-input"
+      ". . . . . . . . ."
+      ". . . start-activity start-activity start-activity . . ."; */
+  }
+
+  .new-activity {
+    width: 100%;
+    height: 80vh;
+  }
+
+  .category-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .category-choice p {
+    align-self: flex-start;
+  }
+
+  .stud-button,
+  .med-button,
+  .ex-button {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    width: 12em;
+    height: 3em;
+    padding: 1em;
+    margin: .3em;
+  }
+
+  .logos {
+    width: 1.75em;
+  }
+
+  .past-activity {
+    width: 100%;
+  }
 }
