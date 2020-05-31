@@ -284,19 +284,20 @@ h3 {
   }
 
   form {
-    padding: 0 1em 2em 0;
-    height: 80vh;
-    /* grid-template-areas:
+    padding: 0 .5em 2em .5em;
+    height: 75vh;
+    grid-auto-rows: minmax(3vh, auto);
+    grid-template-areas:
       "category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice"
       "category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice"
       "category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice"
-      ". task-label task-label task-label task-label task-label task-label task-label ."
-      ". task-input task-input task-input task-input task-input task-input task-input ."
+      "task-label task-label task-label task-label task-label task-label task-label task-label task-label"
+      "task-input task-input task-input task-input task-input task-input task-input task-input task-input"
       ". . . . . . . . ."
-      "minute-label minute-label minute-label minute-label . second-label second-label second-label minute-label"
+      "minute-label minute-label minute-label minute-label . second-label second-label second-label second-label"
       "minute-input minute-input minute-input minute-input . second-input second-input second-input second-input"
       ". . . . . . . . ."
-      ". . . start-activity start-activity start-activity . . ."; */
+      ". start-activity start-activity start-activity start-activity start-activity start-activity start-activity .";
   }
 
   .new-activity {
@@ -331,7 +332,16 @@ h3 {
     width: 1.75em;
   }
 
+  .start-button {
+    border-radius: 6%;
+    width: 100%;
+    justify-self: center;
+  }
+
   .past-activity {
     width: 100%;
+    border: 0;
+    border-top: 1px solid #46424D;
+    margin-top: 2em;
   }
 }
