@@ -42,10 +42,10 @@ function inputValidation() {
   var minuteValue = minuteInput.value.trim();
   var secondValue = secondInput.value.trim();
 
-  if(taskValue === "" || minuteValue === "" || secondValue === "") {
+  if(taskValue === "" || minuteValue === "" || secondValue === "" || buttonValue === undefined) {
     errorMessage(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
   } else {
-    currentActivity = new Activity(buttonValue, task.value, minuteInput.value, secondInput.value);
+    currentActivity = new Activity(buttonValue, task.value, parseInt(minuteInput.value), parseInt(secondInput.value));
     success(task);
   };
 };

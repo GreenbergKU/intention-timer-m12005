@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
@@ -17,6 +16,7 @@ body, html {
 }
 
 body {
+  font-family: 'Montserrat', sans-serif;
   background-color: #2B2733;
   color: #CBC9CF;
 }
@@ -162,17 +162,16 @@ small {
   grid-area: task-label;
 }
 
-#task-input,
-#minute-input,
-#second-input {
+.task-input,
+.minute-input,
+.second-input {
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #CBC9CF;
 }
 
-#task-input {
+.task-input {
   grid-area: task-input;
-
 }
 
 label {
@@ -183,7 +182,7 @@ label {
   grid-area: minute-label;
 }
 
-#minute-input {
+.minute-input {
   grid-area: minute-input;
 }
 
@@ -191,11 +190,11 @@ label {
   grid-area: second-label;
 }
 
-#second-input {
+.second-input {
   grid-area: second-input;
 }
 
-#start-activity-button {
+.start-button {
   grid-area: start-activity;
   border-radius: 4%;
   align-self: baseline;
@@ -235,7 +234,8 @@ h3 {
 
 .time {
   font-size: 5em;
-  font-weight: 400;
+  font-family: sans-serif;
+  font-weight: bolder;
   margin-top: 0;
   margin-bottom: .65em;
   grid-area: 2/2/3/3;
@@ -243,7 +243,7 @@ h3 {
 
 .start-time {
   background-color: #46424D;
-  color: #CBC9CF;
+  color: #CBC9CF !important;
   border: 3px solid white;
   border-radius: 90%;
   grid-area: 3/2/4/3;
@@ -264,7 +264,6 @@ h3 {
   color: #FD9089;
   border-color: #FD9089;
 }
-
 
 .meditate-color {
   color: #BE8CE5;
