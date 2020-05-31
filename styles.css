@@ -122,7 +122,6 @@ input[type=number] {
   outline: none;
 }
 
-
 .stud-button {
   grid-area: stud-button;
   justify-self: start;
@@ -194,6 +193,7 @@ label {
 #second-input {
   grid-area: second-input;
 }
+
 
 #start-activity-button {
   grid-area: start-activity;
