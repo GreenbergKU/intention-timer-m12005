@@ -8,19 +8,19 @@ MEMBER(s): Tyler Haglund, Josh Sevy, Suzanne Wolf - Casey
 
 file name: greenbergKU's README template
 ---
----
-# PROJECT NAME: type project
 
-![Casey](https://ca.slack-edge.com/T029P2S9M-U6VMF6L85-fa69b231d590-85) 
-![Sue's slack profile picture (sz85)](https://ca.slack-edge.com/T029P2S9M-UTPTTDE84-13b671276cf8-85)
-![Tyler's slack profile picture (sz85)](https://ca.slack-edge.com/T029P2S9M-UUS7SUX96-a104221ba8d9-85)
-![Josh's slack profile picture (sz85)](https://ca.slack-edge.com/T029P2S9M-UUGQZ6T45-e68735ceecdf-85)
+# project: **INTENTION TIMER**
+
+[![Casey](https://ca.slack-edge.com/T029P2S9M-U6VMF6L85-fa69b231d590-75)](https://github.com/turingschool-examples)
+[![Sue's slack profile picture](https://ca.slack-edge.com/T029P2S9M-UTPTTDE84-13b671276cf8-75)](https://github.com/GreenbergKU)
+[![Tyler's slack profile picture](https://ca.slack-edge.com/T029P2S9M-UUS7SUX96-a104221ba8d9-75)](https://github.com/relyt4me)
+[![Josh's slack profile picture](https://ca.slack-edge.com/T029P2S9M-UUGQZ6T45-e68735ceecdf-75)](https://github.com/JoshSevy)
 
 
-* project manager: __Casey__ [(github)](https://github.com/turingschool-examples)
+* project manager: __Casey__ [(GitHub profile)](https://github.com/turingschool-examples)
 * contributer: __Sue__ [(GitHub profile)](https://github.com/GreenbergKU)
-* contributer: __Tyler__ <[(github)](https://github.com/)>
-* contributer: __Josh__ <[(github)](https://github.com/JoshSevy)>
+* contributer: __Tyler__ [(GitHub profile)](https://github.com/relyt4me)
+* contributer: __Josh__ [(GitHub profile)](https://github.com/JoshSevy)
 ---
 ---
 
@@ -33,7 +33,11 @@ file name: greenbergKU's README template
 ![name](https://ca.slack-edge.com/T029P2S9M-UTPTTDE84-13b671276cf0-72)
 ![name](https://ca.slack-edge.com/T029P2S9M-UTPTTDE84-13b671276cf0-72)
 <br> 
+<slack thrumbnail pics AS LINKS to GITHUB PROFILE>
 
+[![Casey](https://ca.slack-edge.com/T029P2S9M-U6VMF6L85-fa69b231d590-75)](https://github.com/turingschool-examples)
+
+[![Sue's slack profile picture](https://ca.slack-edge.com/T029P2S9M-UTPTTDE84-13b671276cf8-75)](https://github.com/GreenbergKU)
 -->
 ## Brief Synopsis
 
@@ -62,16 +66,16 @@ Every developer has more ideas than time...
   - ``` ![alt text](https://user-images.githubusercontent.com/10098034/79301108-e383f100-7ea5-11ea-849f-996531f06cd1.png) ```
   - can't control size of image with this style
   
-<!--
-- Go checkout the [IDEABOX project website](https://marchcorbin.github.io/ideabox-boilerplate/) on Github Pages.
-- [Ideabox boilerplate repository](https://github.com/turingschool-examples/ideabox-boilerplate): the origonal project on Github.
-- (private) project [Slack channel:](https://app.slack.com/client/T029P2S9M/C011E891RC1)
-- IDEABOX documention:
-   - [DTR](https://github.com/MarchCorbin/ideabox-boilerplate/blob/master/DTR.md)
-   - [Pull Request Template](https://github.com/MarchCorbin/ideabox-boilerplate/blob/master/pull_request_template.md) (image provided below)
--->
 
-# PROJECT IDEABOX:
+- Go checkout the INTENTION TIMER published site on [Github Pages](https://GreenbergKU.github.io/intention-timer-m12005/).
+- Project's [repository](https://github.com/GreenbergKU/intention-timer-m12005) on GitHub.
+- (private) project's [Slack channel](https://app.slack.com/client/T029P2S9M/G014NR07X9P)
+- INTENTION TIMER documention:
+   - [DTR](https://github.com/GreenbergKU/intention-timer-m12005/blob/master/DTR-template.md)
+   - [Pull Request Template](https://github.com/GreenbergKU/intention-timer-m12005/blob/master/pull_request_template.md) (image provided below)
+
+
+# INTENTION TIMER:
 
 ### ITERATION 0:
 
@@ -106,10 +110,11 @@ DIRECTIONS:
 <img width="1000" alt="screenshot of Desktop Layout View after Iteration 0 complete" src="https://user-images.githubusercontent.com/10098034/79301186-25149c00-7ea6-11ea-83da-ebffbc945a6b.png">
 -->
  
-### ITERATION 1: MOBILE LAYOUT
+
 
 #### Brief Synopsis of Objectives 
 <!--
+### ITERATION 1: MOBILE LAYOUT
 * Now that your Desktop Layout is in place, it's time to write some media queries so this is a responsive site.
   - Full mobile layout Images were provided (both with and without navigation menu open)
   - Here are links to the images and files included with the IDEABOX project on github:
@@ -127,12 +132,12 @@ DIRECTIONS:
 ##### `  image description  `
 
 <!--
+
 <img width="250" alt="Mobile_Layout_card_Example-20200411_333AM" src="https://user-images.githubusercontent.com/10098034/79301108-e383f100-7ea5-11ea-849f-996531f06cd1.png">
 ##### `  Mobile layout view while navigation menu expanded  `
 <img width="250" alt="Mobile_Layout_nav_menu_Iter1-20200411_337AM" src="https://user-images.githubusercontent.com/10098034/79301111-e4b51e00-7ea5-11ea-8b42-89fe7493c29b.png">
--->
-### ITERATION 2: ADDING IDEAS
 
+-->
 
 #### Brief Synopsis of Objectives
 
@@ -142,8 +147,6 @@ DIRECTIONS:
 
 #### SCREENSHOTS
 
-
-### ITERATION 3: FAVORITING & DELETING IDEAS
 
 #### Brief Synopsis of Objectives 
 
@@ -154,8 +157,6 @@ DIRECTIONS:
 #### SCREENSHOTS
 
 
-### ITERATION 4: LOCAL STORAGE & FILTERING
-
 #### Brief Synopsis of Objectives
 
 #### Summary of Progress
@@ -164,8 +165,6 @@ DIRECTIONS:
 
 #### SCREENSHOTS
 
-
-### ITERATION 5: LOCAL STORAGE & FILTERING
 
 #### Brief Synopsis of Objectives
 

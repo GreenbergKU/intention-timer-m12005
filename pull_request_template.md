@@ -1,8 +1,8 @@
 ---
-PROJECT: Intention Timer
+PROJECT: INTENTION TIMER
 PROGRAM: TURING FE
 TERM: MOD 1b #2005
-DATE: 00/00/2020
+DATE: 05/26/2020
 TEAM: group project
 MEMBER(s): Tyler Haglund, Josh Sevy, Suzanne Wolf - Casey
 file name: greenbergKU's PR TEMPLATE
@@ -10,13 +10,10 @@ file title: GENERAL PULL REQUEST TEMPLATE
 ---
 
 ## Description
-
 #### ***Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change***
 
 
-
 ## Fixes (issue)
-
 
 
 ## Type of change
@@ -28,9 +25,8 @@ file title: GENERAL PULL REQUEST TEMPLATE
 - [ ] Refactoring
 
 
-# How Has This Been Tested?
-
-
+## Testing:
+---
 
 
 # CHECKLIST:
@@ -52,11 +48,12 @@ file title: GENERAL PULL REQUEST TEMPLATE
   - [ ] code syntax:
   - [ ] coding styles:
  
-#### Additional Comments
 ---
-***Add any other context or screenshots about the feature request here.***
+***ANY comments / screenshots / ideas / HERE***
+---
 
-
-
-
+---
+---
+---
+---
 ---
