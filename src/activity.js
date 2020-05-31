@@ -6,6 +6,7 @@ class Activity {
         this.minutes = minutes;
         this.seconds = seconds;
         this.isCompleted = false;
+        this.totalSeconds = this.minutes * 60 + this.seconds;
 
      }
 
