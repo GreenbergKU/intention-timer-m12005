@@ -7,7 +7,7 @@
 
 
 
-# Overview
+## Overview
 
 Intention Timer is a website that can be used when a user wants to set timers for productive activities such as meditation, studying, and exersize. They can then save the successes of those activities so they can view their accomplishments.  The user inputs information about their activity and a duration time. Then they select "Start Activity" and begin the task. The site will start a timer for the activity with a countdown. Once completed, the user can saved their completed activities.   
    
@@ -65,7 +65,7 @@ To see the current webpage on GitHup Pages click [here](https://greenbergku.gith
 ---
 
 
-## ScreenShots of Functionality.  
+## Functionality.  
 
   Setting up your activity:   
 ![Gif of start activyt](assets/start-activity.gif)
