@@ -1,6 +1,7 @@
 var categorySection = document.querySelector('.category-choice');
 var newActivitySection = document.querySelector('.new-activity');
 
+
 var startButton = document.querySelector('#start-activity-button');
 
 var currentActivity = new Activity;
@@ -13,7 +14,7 @@ categorySection.addEventListener('click', function(event) {
         if (categoryChild.id === event.target.id) {
             categoryChild.isActive = true;
 
-            currentActivity.catagory = event.target.name;
+            currentActivity.category = event.target.name;
 
             categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
             categoryChild.classList.add(`${categoryChild.name}-color`);
@@ -32,12 +33,11 @@ var secondInput = document.getElementById('second-input');
 
 form.addEventListener('submit',function(event) {
   event.preventDefault();
-
   inputValidation();
 });
 
 function inputValidation() {
-  var buttonValue = currentActivity.catagory;
+  var buttonValue = currentActivity.category;
   var taskValue = task.value.trim();
   var minuteValue = minuteInput.value.trim();
   var secondValue = secondInput.value.trim();
@@ -45,10 +45,30 @@ function inputValidation() {
   if(taskValue === "" || minuteValue === "" || secondValue === "") {
     errorMessage(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
   } else {
-    success(task);
     currentActivity = new Activity(buttonValue, task.value, minuteInput.value, secondInput.value);
-  }
-}
+    success(task);
+  };
+};
+
+function changeDisplays() {
+  var timerSection = document.querySelector('.timer-wrapper');
+  var formSection = document.querySelector('.form');
+
+  timerSection.classList.toggle('hidden');
+  formSection.classList.toggle('hidden');
+  updateTimerPage();
+};
+
+function updateTimerPage() {
+    var timerButton = document.querySelector('.start-time');
+    var userTask = document.querySelector('.user-task');
+    var clockTime = document.querySelector('.time');
+
+    timerButton.classList.add(`${currentActivity.category}-color`);
+    userTask.innerText = `${currentActivity.description}`;
+    clockTime.innerText = `${currentActivity.startTimer()}`;
+
+};
 
 function errorMessage (input, message){
   var formError = input.parentElement;
@@ -64,6 +84,7 @@ function success(input) {
 
   addError.innerHTML = '';
   formError.className = 'form';
+  changeDisplays();
 }
 
 function isNumber(event) {
