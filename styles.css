@@ -131,7 +131,7 @@ form {
 .minute-input,
 .second-input {
   background-color: transparent;
-  border: none;
+  border: 0;
   border-bottom: 2px solid #CBC9CF;
 }
 
@@ -167,7 +167,6 @@ small {
 
 .error-message {
   border-color: #BE8CE5;
-  visibility: visible;
 }
 
 .warning {

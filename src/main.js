@@ -27,12 +27,13 @@ categorySection.addEventListener('click', function(event) {
 });
 
 var form = document.getElementById('form');
-var task = document.getElementById('task-input');
-var minuteInput = document.getElementById('minute-input');
-var secondInput = document.getElementById('second-input');
+var task = document.getElementById('task-return');
+var minuteInput = document.getElementById('minute-return');
+var secondInput = document.getElementById('second-return');
 
 form.addEventListener('submit',function(event) {
   event.preventDefault();
+  
   inputValidation();
 });
 
