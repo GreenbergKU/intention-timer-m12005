@@ -2,14 +2,13 @@ var categorySection = document.querySelector('.category-choice');
 var newActivitySection = document.querySelector('.new-activity');
 var formSection = document.getElementById('form');
 
-
 var currentActivity = new Activity;
 var savedActivites = [];
 
 categorySection.addEventListener('click', displayCategory);
-// make 1 global 'click' listener
-function displayCategory(event) {
+formSection.addEventListener('submit', inputValidation)
 
+function displayCategory(event) {
     for (var i = 1; i < categorySection.children.length; i++) {
         var categoryChild = categorySection.children[i];
         if (categoryChild.id === event.target.id) {
@@ -23,31 +22,23 @@ function displayCategory(event) {
     };
 }
 
-formSection.addEventListener('submit', validateInputs);
-
-function validateInputs(event) {
-      event.preventDefault();
-    var task = document.getElementById('task-input');
-    var minuteInput = document.getElementById('minute-input');
-    var secondInput = document.getElementById('second-input');  
-
-if (currentActivity.category === undefined || taskValue === "" || minuteValue === "" || secondValue === "") {   
+function inputValidation(event) {
+  event.preventDefault();
+  var task = document.getElementById('task-input');
+  var minuteInput = document.getElementById('minute-input');
+  var secondInput = document.getElementById('second-input');
+  if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
     errorMessage(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
-    } else {
-    currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
-    success(task);
-    // TERNARY OPPORTUNITY 
-    // if (conditonal...) {do this...} else {to that...} 
-    // ternary = (conditional...) ? (do this...) : (do that...)
+  } else {
+    currentActivity = new Activity(currentActivity.category, task.value.trim(), minuteInput.value, secondInput.value);
+    success(task);    
   };
-};
+}
 
 function changeDisplays() {
   var timerSection = document.querySelector('.timer-wrapper');
-  var formSection = document.querySelector('.form'); // CAN BE CHANGED TO JUST FORM
-
   timerSection.classList.toggle('hidden');
-  formSection.classList.toggle('hidden'); // CAN BE CHANGED TO JUST FORM
+  formSection.classList.toggle('hidden'); // CAN BE CHANGED 
   updateTimerPage();
 };
 
@@ -55,7 +46,6 @@ function updateTimerPage() {
     var timerButton = document.querySelector('.start-time');
     var userTask = document.querySelector('.user-task');
     var clockTime = document.querySelector('.time');
-
     timerButton.classList.add(`${currentActivity.category}-color`);
     userTask.innerText = `${currentActivity.description}`;
     clockTime.innerText = `${currentActivity.startTimer()}`;
@@ -63,22 +53,21 @@ function updateTimerPage() {
 
 // function naming conventions are suppose to imply an action
 // suggestions: validateForm() alertError(), resetForm(), validateNumber()
-function displayErrorMessage(input, message){
+function errorMessage (input, message) {
   var formError = input.parentElement;
-  var addError = form.querySelector('small');
-
+  var addError = formSection.querySelector('small');
   addError.innerHTML = message;
   formError.className = 'form error-message';
 }
 
-function updateForm(input) {
+function success(input) {
   var formError = input.parentElement;
-  var addError = formSection.querySelector('small');
-
+  var addError = form.querySelector('small');
   addError.innerHTML = '';
   formError.className = 'form';
   changeDisplays();
 }
+
 
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);

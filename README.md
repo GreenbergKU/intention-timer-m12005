@@ -71,6 +71,7 @@ The user can start the time by clicking Start.
 While timer is running, the user should see it count down by second.
 When the timer completes, an alert should appear in the browser, letting the user know that the time is up and the activity has been completed.
 NOTE: This alert is temporary and is not something we suggest using in a fully built out application.
+
 Iteration 4 - Logging Past Activities
 
 STOP! Did you refactor Iteration 3? Clean up your code before moving on!
@@ -87,6 +88,7 @@ STOP! Did you refactor Iteration 4? Clean up your code before moving on!
 
 When the user refreshes the page,
 Their past activities are still displayed!
+
 Optional Extensions
 
 Remember, do not move on to any of these extensions if functionality from the previous iterations is not complete or bug-free.
@@ -161,7 +163,7 @@ HTML - Style and Implementation
 Application fully implements HTML that is accessible for folks with visual disabilities.
 Reference this lesson plan
 3:
-Application has markup that is easy to read and follows across naming conventions
+- Application has markup that is easy to read and **follows across naming conventions**
 Application minimizes extraneous elements
 2:
 Application adds to the above with HTML that incorporates semantic HTML elements whenever possible
@@ -170,10 +172,11 @@ Application has a simple, clean HTML structure
 Crafts markup according to the Turing HTML style guide
 0:
 HTML is not formatted properly
+
 CSS - Style and Implementation
 
 4:
-Application adds to the requirements of the Proficient category by using BEM, SMACCS, or another set of naming conventions for classes
+`Application adds to the requirements of the Proficient category by using BEM, SMACCS, or another set of naming conventions for classes`
 3:
 Applications adds to the above by removing repetitive rules and blocks of code according to the DRY principle
 Application has 3 or fewer media queries for responsiveness
@@ -185,23 +188,24 @@ Crafts CSS according to the Turing CSS style guide
 0:
 CSS is not formatted properly
 Application is not responsive
+
 JavaScript - Style and Implementation
 
 4:
 Functions and code are well-refactored and show developer empathy
 There are no global variables aside from query selectors, pastActivities and currentActivity.
 Functions strictly observe SRP and do not exceed 10 lines
-Uses logical operators instead of if/else statements wherever applicable
-There are no nested if/else statements
+`Uses logical operators instead of if/else statements wherever applicable`
+`There are no nested if/else statements`
 3:
-Application uses event delegation correctly on dynamic elements
+## Application uses event delegation correctly on dynamic elements
 Functions are DRY with a focus on SRP
 Application demonstrates full separation of data-model and presentational logic (there is no DOM logic in the Activity class)
 Application makes use of arguments and parameters to make functions more dynamic/reusable
 Application correctly uses localStorage to persist data
 2:
 There are no extraneous or unnecessary parameters in functions
-Application uses function declarations over anonymous functions in event listeners
+## Application uses function declarations over anonymous functions in event listeners
 Application uses if/else statements to handle multiple paths of logic/error handling
 Application fails to fully separate data-model and presentational logic (DOM) - example: there is DOM logic in the Activity class
 1:
