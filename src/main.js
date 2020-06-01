@@ -1,16 +1,28 @@
-var categorySection = document.querySelector('.category-choice');
-var newActivitySection = document.querySelector('.new-activity');
-var formSection = document.getElementById('form');
-var startTimerButton = document.querySelector('.start-time');
+//var newActivitySection = document.querySelector('.new-activity');
+//var formSection = document.getElementById('form');
+//var startTimerButton = document.querySelector('.start-time');
 
 var currentActivity = new Activity;
 var savedActivites = [];
 
-categorySection.addEventListener('click', displayCategory);
-formSection.addEventListener('submit', inputValidation)
-startTimerButton.addEventListener('click', runTimer);
+document.addEventListener('click', function(event) {
+    event.preventDefault();
+    if (event.target.parentElement.classList.contains("category-choice")) {
+         displayCategory(event);
+    } else if (event.target.type === "submit") {
+         validateInputs(event);
+    } else if (event.target.classList.contains("start-time")) {
+        runTimer(event);
+    };
+});
+
+// categorySection.addEventListener('click', displayCategory);
+// formSection.addEventListener('submit', inputValidation)
+// startTimerButton.addEventListener('click', runTimer);
 
 function displayCategory(event) {
+    var categorySection = document.querySelector('.category-choice');
+
     for (var i = 1; i < categorySection.children.length; i++) {
         var categoryChild = categorySection.children[i];
         if (categoryChild.id === event.target.id) {
@@ -24,20 +36,22 @@ function displayCategory(event) {
     };
 }
 
-function inputValidation(event) {
+function validateInputs(event) {
   event.preventDefault();
+  
   var task = document.getElementById('task-return');
   var minuteInput = document.getElementById('minute-return');
   var secondInput = document.getElementById('second-return');
   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
-    errorMessage(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
+    displayError(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
   } else {
     currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
-    success(task);
+    resetForm(task);
   };
 }
 
 function changeDisplays() {
+  var formSection = document.getElementById('form');
   var timerSection = document.querySelector('.timer-wrapper');
   timerSection.classList.toggle('hidden');
   formSection.classList.toggle('hidden'); // CAN BE CHANGED
@@ -55,16 +69,21 @@ function updateTimerPage() {
 
 // function naming conventions are suppose to imply an action
 // suggestions: validateForm() alertError(), resetForm(), validateNumber()
-function errorMessage (input, message) {
+
+function displayError(input, message) {
+  // var formSection = document.getElementById('form');
   var formError = input.parentElement;
-  var addError = formSection.querySelector('small');
+  // var addError = formSection.querySelector('small');
+  var addError = document.querySelector('small');  
   addError.innerHTML = message;
   formError.className = 'form error-message';
 }
 
-function success(input) {
+function resetForm(input) {
+  //var formSection = document.getElementById('form');
   var formError = input.parentElement;
-  var addError = form.querySelector('small');
+  //var addError = formSection.querySelector('small');
+  var addError = document.querySelector('small');
   addError.innerHTML = '';
   formError.className = 'form';
   changeDisplays();
@@ -79,6 +98,7 @@ function isNumber(event) {
 }
 
 function runTimer() {
+  var startTimerButton = document.querySelector('.start-time');
   var now = Date.now();
   var endTime = now + currentActivity.totalSeconds * 1000;
   var outputTime = document.querySelector('.time');
