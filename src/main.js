@@ -38,7 +38,7 @@ function displayCategory(event) {
 
 function validateInputs(event) {
   event.preventDefault();
-  
+
   var task = document.getElementById('task-return');
   var minuteInput = document.getElementById('minute-return');
   var secondInput = document.getElementById('second-return');
@@ -64,7 +64,7 @@ function updateTimerPage() {
     var clockTime = document.querySelector('.time');
     timerButton.classList.add(`${currentActivity.category}-color`);
     userTask.innerText = `${currentActivity.description}`;
-    clockTime.innerText = `${currentActivity.startTimer()}`;
+    clockTime.innerText = `${convertToClock(currentActivity.totalSeconds)}`;
 };
 
 // function naming conventions are suppose to imply an action
@@ -74,7 +74,7 @@ function displayError(input, message) {
   // var formSection = document.getElementById('form');
   var formError = input.parentElement;
   // var addError = formSection.querySelector('small');
-  var addError = document.querySelector('small');  
+  var addError = document.querySelector('small');
   addError.innerHTML = message;
   formError.className = 'form error-message';
 }
@@ -98,27 +98,39 @@ function isNumber(event) {
 }
 
 function runTimer() {
-  var startTimerButton = document.querySelector('.start-time');
-  var now = Date.now();
-  var endTime = now + currentActivity.totalSeconds * 1000;
+  currentActivity.startTimer();
   var outputTime = document.querySelector('.time');
-
-  startTimerButton.disabled = true;
-  var countdown = setInterval(function() {
-    var secondsLeft = Math.floor((endTime - Date.now()) / 1000);
-    // set the innerText of the html to the below;
-    outputTime.innerHTML = convertToClock(secondsLeft);
-    console.log(convertToClock(secondsLeft));
-    if (secondsLeft <= 0) {
-      clearInterval(countdown);
+  var refresher = setInterval(function(){
+    if (currentActivity.secondsLeft() < 0) {
+      clearInterval(refresher);
       alert('TIMES UP');
+      outputTime.innerHTML = "00:00";
+    } else {
+      outputTime.innerHTML = convertToClock(currentActivity.secondsLeft());
     };
   }, 990);
+
+  // var startTimerButton = document.querySelector('.start-time');
+  // var now = Date.now();
+  // var endTime = now + currentActivity.totalSeconds * 1000;
+  // var outputTime = document.querySelector('.time');
+  //
+  // startTimerButton.disabled = true;
+  // var countdown = setInterval(function() {
+  //   var secondsLeft = Math.floor((endTime - Date.now()) / 1000);
+  //   // set the innerText of the html to the below;
+  //   outputTime.innerHTML = convertToClock(secondsLeft);
+  //   console.log(convertToClock(secondsLeft));
+  //   if (secondsLeft <= 0) {
+  //     clearInterval(countdown);
+  //     alert('TIMES UP');
+  //   };
+  // }, 990);
 };
 
-function convertToClock(secondsLeft) {
-  var minutes = Math.floor(secondsLeft / 60);
-  var seconds = secondsLeft % 60;
+function convertToClock(timeInSeconds) {
+  var minutes = Math.floor(timeInSeconds / 60);
+  var seconds = timeInSeconds % 60;
   if (seconds < 10 && minutes < 10) {
     return `0${minutes}:0${seconds}`;
   } else if (seconds < 10 && minutes >= 10) {
