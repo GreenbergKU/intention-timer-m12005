@@ -10,7 +10,7 @@ document.addEventListener('click', function(event) {
     if (event.target.parentElement.classList.contains("category-choice")) {
          displayCategory(event);
     } else if (event.target.type === "submit") {
-         validateInputs(event);
+         validateInputs();
     } else if (event.target.classList.contains("start-time")) {
         runTimer(event);
     };
@@ -36,25 +36,53 @@ function displayCategory(event) {
     };
 }
 
-function validateInputs(event) {
-  event.preventDefault();
-  
+
+
+// THIS FUNCTION BELOW CAN BE REMOVED <-------------------------------------------
+// function validateInputs(event) {
+//   event.preventDefault();
+//
+//   var task = document.getElementById('task-return');
+//   var minuteInput = document.getElementById('minute-return');
+//   var secondInput = document.getElementById('second-return');
+//   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
+//     displayError(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
+//   } else {
+//     currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
+//     resetForm(task);
+//   };
+// }
+
+//
+//
+//
+// THIS IS THE UPDATED VALIDATION I CREATED THE ABOVE CAN BE REMOVED
+function validateInputs() {
   var task = document.getElementById('task-return');
   var minuteInput = document.getElementById('minute-return');
   var secondInput = document.getElementById('second-return');
+  var addErrorMessage = document.querySelector('small');
+
   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
-    displayError(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
+    addErrorMessage.classList.remove('hidden');
   } else {
+    addErrorMessage.classList.add('hidden');
     currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
-    resetForm(task);
-  };
+    changeDisplays();
+  }
 }
+//
+//
+//
+
 
 function changeDisplays() {
   var formSection = document.getElementById('form');
   var timerSection = document.querySelector('.timer-wrapper');
+  var currentPageTitle = document.querySelector('h2');
   timerSection.classList.toggle('hidden');
   formSection.classList.toggle('hidden'); // CAN BE CHANGED
+  currentPageTitle.innerText = 'Current Activity';
   updateTimerPage();
 };
 
@@ -65,30 +93,29 @@ function updateTimerPage() {
     timerButton.classList.add(`${currentActivity.category}-color`);
     userTask.innerText = `${currentActivity.description}`;
     clockTime.innerText = `${currentActivity.startTimer()}`;
+    // clockTime.innerText = convertToClock();
 };
 
 // function naming conventions are suppose to imply an action
 // suggestions: validateForm() alertError(), resetForm(), validateNumber()
 
-function displayError(input, message) {
-  // var formSection = document.getElementById('form');
-  var formError = input.parentElement;
-  // var addError = formSection.querySelector('small');
-  var addError = document.querySelector('small');  
-  addError.innerHTML = message;
-  formError.className = 'form error-message';
-}
 
-function resetForm(input) {
-  //var formSection = document.getElementById('form');
-  var formError = input.parentElement;
-  //var addError = formSection.querySelector('small');
-  var addError = document.querySelector('small');
-  addError.innerHTML = '';
-  formError.className = 'form';
-  changeDisplays();
-}
 
+// These functions below can be removed <-----------------------------------------------
+// function displayError(input, message) {
+//   var formError = input.parentElement;
+//   var addError = document.querySelector('small');
+//   addError.innerHTML = message;
+//   formError.className = 'form error-message';
+// }
+//
+// function resetForm(input) {
+//   var formError = input.parentElement;
+//   var addError = document.querySelector('small');
+//   addError.innerHTML = '';
+//   formError.className = 'form';
+//   changeDisplays();
+// }
 
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
