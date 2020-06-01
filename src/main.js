@@ -1,4 +1,4 @@
-var categorySection = document.querySelector('.category-choice');
+
 var newActivitySection = document.querySelector('.new-activity');
 var formSection = document.getElementById('form');
 var startTimerButton = document.querySelector('.start-time');
@@ -6,11 +6,24 @@ var startTimerButton = document.querySelector('.start-time');
 var currentActivity = new Activity;
 var savedActivites = [];
 
-categorySection.addEventListener('click', displayCategory);
-formSection.addEventListener('submit', inputValidation)
-startTimerButton.addEventListener('click', runTimer);
+document.addEventListener('click', function(event) {
+    event.preventDefault();
+    if (event.target.parentElement.classList.contains("category-choice")) {
+         displayCategory(event);
+    } else if (event.target.type === "submit") {
+         inputValidation(event);
+    } else if (event.target.classList.contains("start-time")) {
+        runTimer(event);
+    };
+});
+
+//categorySection.addEventListener('click', displayCategory);
+//formSection.addEventListener('submit', inputValidation)
+//startTimerButton.addEventListener('click', runTimer);
 
 function displayCategory(event) {
+    //var categorySection = document.querySelector('.category-choice');
+
     for (var i = 1; i < categorySection.children.length; i++) {
         var categoryChild = categorySection.children[i];
         if (categoryChild.id === event.target.id) {
@@ -26,6 +39,7 @@ function displayCategory(event) {
 
 function inputValidation(event) {
   event.preventDefault();
+  
   var task = document.getElementById('task-return');
   var minuteInput = document.getElementById('minute-return');
   var secondInput = document.getElementById('second-return');
@@ -38,6 +52,7 @@ function inputValidation(event) {
 }
 
 function changeDisplays() {
+  //var formSection = document.getElementById('form');
   var timerSection = document.querySelector('.timer-wrapper');
   timerSection.classList.toggle('hidden');
   formSection.classList.toggle('hidden'); // CAN BE CHANGED
@@ -56,6 +71,7 @@ function updateTimerPage() {
 // function naming conventions are suppose to imply an action
 // suggestions: validateForm() alertError(), resetForm(), validateNumber()
 function errorMessage (input, message) {
+  //var formSection = document.getElementById('form');
   var formError = input.parentElement;
   var addError = formSection.querySelector('small');
   addError.innerHTML = message;
@@ -63,6 +79,7 @@ function errorMessage (input, message) {
 }
 
 function success(input) {
+  //var formSection = document.getElementById('form');
   var formError = input.parentElement;
   var addError = form.querySelector('small');
   addError.innerHTML = '';
