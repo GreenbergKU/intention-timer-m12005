@@ -36,6 +36,9 @@ function displayCategory(event) {
     };
 }
 
+
+
+// THIS FUNCTION BELOW CAN BE REMOVED <-------------------------------------------
 // function validateInputs(event) {
 //   event.preventDefault();
 //
@@ -50,6 +53,10 @@ function displayCategory(event) {
 //   };
 // }
 
+//
+//
+//
+// THIS IS THE UPDATED VALIDATION I CREATED THE ABOVE CAN BE REMOVED
 function validateInputs() {
   var task = document.getElementById('task-return');
   var minuteInput = document.getElementById('minute-return');
@@ -64,6 +71,10 @@ function validateInputs() {
     changeDisplays();
   }
 }
+//
+//
+//
+
 
 function changeDisplays() {
   var formSection = document.getElementById('form');
@@ -81,13 +92,16 @@ function updateTimerPage() {
     var clockTime = document.querySelector('.time');
     timerButton.classList.add(`${currentActivity.category}-color`);
     userTask.innerText = `${currentActivity.description}`;
-    // clockTime.innerText = `${currentActivity.startTimer()}`;
-    clockTime.innerText = convertToClock();
+    clockTime.innerText = `${currentActivity.startTimer()}`;
+    // clockTime.innerText = convertToClock();
 };
 
 // function naming conventions are suppose to imply an action
 // suggestions: validateForm() alertError(), resetForm(), validateNumber()
 
+
+
+// These functions below can be removed <-----------------------------------------------
 // function displayError(input, message) {
 //   var formError = input.parentElement;
 //   var addError = document.querySelector('small');
@@ -102,7 +116,6 @@ function updateTimerPage() {
 //   formError.className = 'form';
 //   changeDisplays();
 // }
-
 
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
@@ -129,19 +142,6 @@ function runTimer() {
     };
   }, 990);
 };
-
-// function convertToClock(secondsLeft) {
-//   var minutes = Math.floor(secondsLeft / 60);
-//   var seconds = secondsLeft % 60;
-//   if (seconds < 10 && minutes < 10) {
-//     return `0${minutes}:0${seconds}`;
-//   } else if (seconds < 10 && minutes >= 10) {
-//     return `${minutes}:0${seconds}`;
-//   } else if (seconds >= 10 && minutes < 10) {
-//     return `0${minutes}:${seconds}`;
-//   };
-//   return `${minutes}:${seconds}`;
-// };
 
 function convertToClock(secondsLeft) {
   var minutes = Math.floor(secondsLeft / 60);
