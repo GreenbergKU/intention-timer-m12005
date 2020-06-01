@@ -15,7 +15,7 @@
     <main>
       <section class="new-activity">
         <h2>New Activity</h2>
-        <form autocomplete="off" class="form" id="form">
+        <form autocomplete="off" class="form hidden" id="form">
           <div class="category-choice">
             <p>Select a Catagory:</p>
             <button class="stud-button" type="button" name="study" value="study" id="stud-button">
@@ -37,11 +37,11 @@
           <input class="second-input"type="number" onkeypress="isNumber(event)" name="seconds" id="second-return" min="0" max="59">
           <button class="start-button" type="submit" name="start" id="start-activity-button">START ACTIVITY</button>
         </form>
-          <div class="timer-wrapper hidden">
+          <div class="timer-wrapper">
             <h3 class='user-task'>Deep Breathing</h3>
             <p class='time'>05:00</p>
             <button type="button" name="button" class='start-time'>START</button>
-            <button type="button" name="button" class='log-activity hidden'>Log Activity</button>
+            <button type="button" name="button" class='log-activity hidden'>LOG ACTIVITY</button>
           </div>
       </section>
       <section class="past-activity">

@@ -106,11 +106,11 @@ header {
 main {
   display: flex;
   width: 100%;
-  height: 94vh;
+  height: 92vh;
 }
 
 h2 {
-  margin-left: .6em;
+  margin: .2em 0em .2em .6em;
 }
 
 .new-activity {
@@ -121,10 +121,10 @@ h2 {
 
 form {
   padding: 2em 0 2em 0;
-  height: 85vh;
+  height: 84vh;
   border-radius: 1%;
   background-color: #46424D;
-  margin: 1em;
+  margin: 0 1em 0em 1em;
 }
 
 .task-input,
@@ -191,7 +191,8 @@ small {
  margin: 1em;
  display: grid;
  grid-template-columns: repeat(3, 1fr);
- grid-auto-rows: minmax(25px, auto);
+ grid-auto-rows: minmax(70px, auto);
+ height: 83vh;
 }
 
 
@@ -217,8 +218,8 @@ h3 {
   border: 3px solid white;
   border-radius: 90%;
   grid-area: 3/2/4/3;
-  width: 8em;
-  height: 8em;
+  width: 9em;
+  height: 9em;
   justify-self: center;
   font-size: 1.6em;
   margin-bottom: 1.5em;
