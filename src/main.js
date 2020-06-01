@@ -1,24 +1,27 @@
-//var newActivitySection = document.querySelector('.new-activity');
-//var formSection = document.getElementById('form');
-//var startTimerButton = document.querySelector('.start-time');
 
 var currentActivity = new Activity;
 var savedActivites = [];
 
 document.addEventListener('click', function(event) {
-    event.preventDefault();
-    if (event.target.parentElement.classList.contains("category-choice")) {
-         displayCategory(event);
-    } else if (event.target.type === "submit") {
-         validateInputs();
-    } else if (event.target.classList.contains("start-time")) {
-        runTimer(event);
-    };
-});
+  event.preventDefault();
 
-// categorySection.addEventListener('click', displayCategory);
-// formSection.addEventListener('submit', inputValidation)
-// startTimerButton.addEventListener('click', runTimer);
+  // event.target = document.getElementByClassName("log-activity");
+  if (event.target.parentElement.classList.contains("category-choice")) {
+       displayCategory(event);
+  } else if (event.target.type === "submit") {
+       validateInputs(event);
+  } else if (event.target.classList.contains("start-time")) {
+      runTimer(event);
+  }
+
+////// ADDITION 
+  // else if (event.target.classList.contains ("log-activity")) {
+  //    console.log("PRE-currentActivity before markComplete() = ", currentActivity)
+  //    //markComplete needs to be looked at
+  //    currentActivity.markComplete(currentActivity);
+  //    addToPast();
+  // }
+});
 
 function displayCategory(event) {
     var categorySection = document.querySelector('.category-choice');
@@ -37,24 +40,6 @@ function displayCategory(event) {
 }
 
 
-
-// THIS FUNCTION BELOW CAN BE REMOVED <-------------------------------------------
-// function validateInputs(event) {
-//   event.preventDefault();
-//
-//   var task = document.getElementById('task-return');
-//   var minuteInput = document.getElementById('minute-return');
-//   var secondInput = document.getElementById('second-return');
-//   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
-//     displayError(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
-//   } else {
-//     currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
-//     resetForm(task);
-//   };
-// }
-
-//
-//
 //
 // THIS IS THE UPDATED VALIDATION I CREATED THE ABOVE CAN BE REMOVED
 function validateInputs() {
@@ -71,10 +56,6 @@ function validateInputs() {
     changeDisplays();
   }
 }
-//
-//
-//
-
 
 function changeDisplays() {
   var formSection = document.getElementById('form');
@@ -96,26 +77,6 @@ function updateTimerPage() {
     // clockTime.innerText = convertToClock();
 };
 
-// function naming conventions are suppose to imply an action
-// suggestions: validateForm() alertError(), resetForm(), validateNumber()
-
-
-
-// These functions below can be removed <-----------------------------------------------
-// function displayError(input, message) {
-//   var formError = input.parentElement;
-//   var addError = document.querySelector('small');
-//   addError.innerHTML = message;
-//   formError.className = 'form error-message';
-// }
-//
-// function resetForm(input) {
-//   var formError = input.parentElement;
-//   var addError = document.querySelector('small');
-//   addError.innerHTML = '';
-//   formError.className = 'form';
-//   changeDisplays();
-// }
 
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
@@ -155,3 +116,30 @@ function convertToClock(secondsLeft) {
   };
   return `${minutes}:${seconds}`;
 };
+
+
+// ////////// ADDITIONS
+
+// function addToPast() {
+//   savedActivites.push(currentActivity);
+//   //saveToStorage(pastActivities);
+//   console.log("savedActivites after addToPast() = ", savedActivites);
+// }
+
+// function displayMainPage() {
+//   var activityWrapper = document.querySelector(".activity-wrapper");
+//   activityWrapper.innerHTML = ""; 
+//   pastActivites.forEach(function(activity) {
+//     activityWrapper.insertAdjacentHTML("afterbegin", `     
+//       <article class="activity-cards" id=${activity.id}>
+//         <span class="card-text">
+//           <p class="card-category">${activity.category}</p>
+//           <p class="card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
+//           <br>
+//           <p class="card-description">Description and/or Task!</p>
+//         </span>
+//       </article>
+//       `
+//     )
+//   });
+// };
