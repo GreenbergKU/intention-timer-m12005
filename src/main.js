@@ -1,7 +1,3 @@
-//var newActivitySection = document.querySelector('.new-activity');
-//var formSection = document.getElementById('form');
-//var startTimerButton = document.querySelector('.start-time');
-
 var currentActivity = new Activity;
 var savedActivites = [];
 
@@ -10,15 +6,11 @@ document.addEventListener('click', function(event) {
     if (event.target.parentElement.classList.contains("category-choice")) {
          displayCategory(event);
     } else if (event.target.type === "submit") {
-         validateInputs(event);
+         validateInputs();
     } else if (event.target.classList.contains("start-time")) {
         runTimer(event);
     };
 });
-
-// categorySection.addEventListener('click', displayCategory);
-// formSection.addEventListener('submit', inputValidation)
-// startTimerButton.addEventListener('click', runTimer);
 
 function displayCategory(event) {
     var categorySection = document.querySelector('.category-choice');
@@ -36,25 +28,29 @@ function displayCategory(event) {
     };
 }
 
-function validateInputs(event) {
-  event.preventDefault();
 
+function validateInputs() {
   var task = document.getElementById('task-return');
   var minuteInput = document.getElementById('minute-return');
   var secondInput = document.getElementById('second-return');
+  var addErrorMessage = document.querySelector('small');
+
   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
-    displayError(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
+    addErrorMessage.classList.remove('hidden');
   } else {
+    addErrorMessage.classList.add('hidden');
     currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
-    resetForm(task);
+    changeDisplays();
   };
-}
+};
 
 function changeDisplays() {
   var formSection = document.getElementById('form');
   var timerSection = document.querySelector('.timer-wrapper');
+  var currentPageTitle = document.querySelector('h2');
   timerSection.classList.toggle('hidden');
   formSection.classList.toggle('hidden'); // CAN BE CHANGED
+  currentPageTitle.innerText = 'Current Activity';
   updateTimerPage();
 };
 
@@ -66,29 +62,6 @@ function updateTimerPage() {
     userTask.innerText = `${currentActivity.description}`;
     clockTime.innerText = `${convertToClock(currentActivity.totalSeconds)}`;
 };
-
-// function naming conventions are suppose to imply an action
-// suggestions: validateForm() alertError(), resetForm(), validateNumber()
-
-function displayError(input, message) {
-  // var formSection = document.getElementById('form');
-  var formError = input.parentElement;
-  // var addError = formSection.querySelector('small');
-  var addError = document.querySelector('small');
-  addError.innerHTML = message;
-  formError.className = 'form error-message';
-}
-
-function resetForm(input) {
-  //var formSection = document.getElementById('form');
-  var formError = input.parentElement;
-  //var addError = formSection.querySelector('small');
-  var addError = document.querySelector('small');
-  addError.innerHTML = '';
-  formError.className = 'form';
-  changeDisplays();
-}
-
 
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
@@ -109,23 +82,6 @@ function runTimer() {
       outputTime.innerHTML = convertToClock(currentActivity.secondsLeft());
     };
   }, 990);
-
-  // var startTimerButton = document.querySelector('.start-time');
-  // var now = Date.now();
-  // var endTime = now + currentActivity.totalSeconds * 1000;
-  // var outputTime = document.querySelector('.time');
-  //
-  // startTimerButton.disabled = true;
-  // var countdown = setInterval(function() {
-  //   var secondsLeft = Math.floor((endTime - Date.now()) / 1000);
-  //   // set the innerText of the html to the below;
-  //   outputTime.innerHTML = convertToClock(secondsLeft);
-  //   console.log(convertToClock(secondsLeft));
-  //   if (secondsLeft <= 0) {
-  //     clearInterval(countdown);
-  //     alert('TIMES UP');
-  //   };
-  // }, 990);
 };
 
 function convertToClock(timeInSeconds) {
