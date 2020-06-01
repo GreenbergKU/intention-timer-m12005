@@ -6,7 +6,7 @@
 form {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  grid-auto-rows: minmax(40px, auto);
+  grid-auto-rows: minmax(50px, auto);
   grid-template-areas:
     ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
     ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
@@ -106,11 +106,11 @@ header {
 main {
   display: flex;
   width: 100%;
-  height: 94vh;
+  height: 92vh;
 }
 
 h2 {
-  margin-left: .6em;
+  margin: .4em 0em .4em .6em;
 }
 
 .new-activity {
@@ -121,10 +121,10 @@ h2 {
 
 form {
   padding: 2em 0 2em 0;
-  height: 85vh;
+  height: 84vh;
   border-radius: 1%;
   background-color: #46424D;
-  margin: 1em;
+  margin: 0 1em 0em 1em;
 }
 
 .task-input,
@@ -177,6 +177,7 @@ small {
 .start-button {
   grid-area: start-activity;
   border-radius: 4%;
+  border: 0;
   align-self: baseline;
   height: 2em;
   min-width: 10em;
@@ -185,23 +186,22 @@ small {
 
 .timer-wrapper {
  text-align: center;
- padding: 2em 0 2em 0;
+ padding: 1em 0 2em 0;
  border-radius: 1%;
  background-color: #46424D;
  margin: 1em;
  display: grid;
  grid-template-columns: repeat(3, 1fr);
  grid-auto-rows: minmax(50px, auto);
-}
-
-.hidden {
-  display: none;
+ height: 81vh;
 }
 
 h3 {
   font-size: 1.4em;
   margin-bottom: 0;
   grid-area: 1/2/2/3;
+  margin-top: 1em;
+  align-self: baseline;
 }
 
 .time {
@@ -219,12 +219,24 @@ h3 {
   border: 3px solid white;
   border-radius: 90%;
   grid-area: 3/2/4/3;
-  width: 9em;
-  height: 9em;
+  width: 8em;
+  height: 8em;
   justify-self: center;
   font-size: 1.6em;
   margin-bottom: 1.5em;
   outline: none;
+}
+
+.log-activity{
+  border-radius: 4%;
+  height: 2em;
+  min-width: 10em;
+  grid-area: 4/2/5/3;
+  border: 0;
+}
+
+.hidden {
+  display: none;
 }
 
 .past-activity {
@@ -288,9 +300,6 @@ h3 {
   }
 }
 
-/* *****ADDITIONS TO THE CSS FOR PHONE AND SCREEN CHANGES***** */
-/* *****ADDITIONS TO THE CSS FOR PHONE AND SCREEN CHANGES***** */
-/* *****ADDITIONS TO THE CSS FOR PHONE AND SCREEN CHANGES***** */
 @media screen and (max-width: 690px) {
   main {
     display: block;
@@ -366,6 +375,3 @@ h3 {
     margin-top: 2em;
   }
 }
-/* *****ADDITIONS TO THE CSS FOR PHONE AND SCREEN CHANGES***** */
-/* *****ADDITIONS TO THE CSS FOR PHONE AND SCREEN CHANGES***** */
-/* *****ADDITIONS TO THE CSS FOR PHONE AND SCREEN CHANGES***** */
