@@ -10,7 +10,7 @@ document.addEventListener('click', function(event) {
     if (event.target.parentElement.classList.contains("category-choice")) {
          displayCategory(event);
     } else if (event.target.type === "submit") {
-         validateInputs(event);
+         validateInputs();
     } else if (event.target.classList.contains("start-time")) {
         runTimer(event);
     };
@@ -36,25 +36,42 @@ function displayCategory(event) {
     };
 }
 
-function validateInputs(event) {
-  event.preventDefault();
-  
+// function validateInputs(event) {
+//   event.preventDefault();
+//
+//   var task = document.getElementById('task-return');
+//   var minuteInput = document.getElementById('minute-return');
+//   var secondInput = document.getElementById('second-return');
+//   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
+//     displayError(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
+//   } else {
+//     currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
+//     resetForm(task);
+//   };
+// }
+
+function validateInputs() {
   var task = document.getElementById('task-return');
   var minuteInput = document.getElementById('minute-return');
   var secondInput = document.getElementById('second-return');
+  var addErrorMessage = document.querySelector('small');
+
   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
-    displayError(task, '<img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!');
+    addErrorMessage.classList.remove('hidden');
   } else {
+    addErrorMessage.classList.add('hidden');
     currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
-    resetForm(task);
-  };
+    changeDisplays();
+  }
 }
 
 function changeDisplays() {
   var formSection = document.getElementById('form');
   var timerSection = document.querySelector('.timer-wrapper');
+  var currentPageTitle = document.querySelector('h2');
   timerSection.classList.toggle('hidden');
   formSection.classList.toggle('hidden'); // CAN BE CHANGED
+  currentPageTitle.innerText = 'Current Activity';
   updateTimerPage();
 };
 
@@ -64,30 +81,27 @@ function updateTimerPage() {
     var clockTime = document.querySelector('.time');
     timerButton.classList.add(`${currentActivity.category}-color`);
     userTask.innerText = `${currentActivity.description}`;
-    clockTime.innerText = `${currentActivity.startTimer()}`;
+    // clockTime.innerText = `${currentActivity.startTimer()}`;
+    clockTime.innerText = convertToClock();
 };
 
 // function naming conventions are suppose to imply an action
 // suggestions: validateForm() alertError(), resetForm(), validateNumber()
 
-function displayError(input, message) {
-  // var formSection = document.getElementById('form');
-  var formError = input.parentElement;
-  // var addError = formSection.querySelector('small');
-  var addError = document.querySelector('small');  
-  addError.innerHTML = message;
-  formError.className = 'form error-message';
-}
-
-function resetForm(input) {
-  //var formSection = document.getElementById('form');
-  var formError = input.parentElement;
-  //var addError = formSection.querySelector('small');
-  var addError = document.querySelector('small');
-  addError.innerHTML = '';
-  formError.className = 'form';
-  changeDisplays();
-}
+// function displayError(input, message) {
+//   var formError = input.parentElement;
+//   var addError = document.querySelector('small');
+//   addError.innerHTML = message;
+//   formError.className = 'form error-message';
+// }
+//
+// function resetForm(input) {
+//   var formError = input.parentElement;
+//   var addError = document.querySelector('small');
+//   addError.innerHTML = '';
+//   formError.className = 'form';
+//   changeDisplays();
+// }
 
 
 function isNumber(event) {
@@ -115,6 +129,19 @@ function runTimer() {
     };
   }, 990);
 };
+
+// function convertToClock(secondsLeft) {
+//   var minutes = Math.floor(secondsLeft / 60);
+//   var seconds = secondsLeft % 60;
+//   if (seconds < 10 && minutes < 10) {
+//     return `0${minutes}:0${seconds}`;
+//   } else if (seconds < 10 && minutes >= 10) {
+//     return `${minutes}:0${seconds}`;
+//   } else if (seconds >= 10 && minutes < 10) {
+//     return `0${minutes}:${seconds}`;
+//   };
+//   return `${minutes}:${seconds}`;
+// };
 
 function convertToClock(secondsLeft) {
   var minutes = Math.floor(secondsLeft / 60);
