@@ -25,12 +25,10 @@ function displayCategory(event) {
             currentActivity.category = event.target.name;
             categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
             categoryChild.classList.add(`${categoryChild.name}-color`);
-            // SPLIT SELECTED COLOR CLASS <--------------------------------------------------
             categoryChild.classList.add(`${categoryChild.name}-border`);
         } else {
             categoryChild.childNodes[1].src = `./assets/${categoryChild.name}.svg`;
             categoryChild.classList.remove(`${categoryChild.name}-color`);
-            // SPLIT SELECTED COLLOR CLASS<--------------------------------------------------
             categoryChild.classList.remove(`${categoryChild.name}-border`);
         };
     };
@@ -60,13 +58,14 @@ function changeDisplays() {
   formSection.classList.toggle('hidden');
   currentPageTitle.innerText = 'Current Activity';
   updateTimerPage();
+  formSection.reset();
+
 };
 
 function updateTimerPage() {
     var timerButton = document.querySelector('.start-time');
     var userTask = document.querySelector('.user-task');
     var clockTime = document.querySelector('.time');
-    // CHAKDED THE TIMER BUTTON CLASS TO AVTIVITY BORDER SO ONLY BORDER TOOK IN THE COLOR
     timerButton.classList.add(`${currentActivity.category}-border`);
     userTask.innerText = currentActivity.description;
     clockTime.innerText = convertToClock(currentActivity.totalSeconds);
