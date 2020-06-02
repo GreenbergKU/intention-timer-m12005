@@ -4,7 +4,6 @@ var pastActivities = [];
 document.addEventListener('click', function(event) {
   event.preventDefault();
 
-  // event.target = document.getElementByClassName("log-activity");
   if (event.target.parentElement.classList.contains("category-choice")) {
        displayCategory(event);
   } else if (event.target.type === "submit") {
@@ -12,7 +11,6 @@ document.addEventListener('click', function(event) {
   } else if (event.target.classList.contains("start-time")) {
       runTimer(event);
   }
-//// ADDITION 
     else if (event.target.classList.contains ("log-activity")) {
       currentActivity.markComplete(currentActivity);
       updatePastActivities();
@@ -27,9 +25,13 @@ function displayCategory(event) {
             currentActivity.category = event.target.name;
             categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
             categoryChild.classList.add(`${categoryChild.name}-color`);
+            // SPLIT SELECTED COLOR CLASS <--------------------------------------------------
+            categoryChild.classList.add(`${categoryChild.name}-border`);
         } else {
             categoryChild.childNodes[1].src = `./assets/${categoryChild.name}.svg`;
             categoryChild.classList.remove(`${categoryChild.name}-color`);
+            // SPLIT SELECTED COLLOR CLASS<--------------------------------------------------
+            categoryChild.classList.remove(`${categoryChild.name}-border`);
         };
     };
 }
@@ -41,8 +43,10 @@ function validateInputs() {
   var addErrorMessage = document.querySelector('small');
   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
     addErrorMessage.classList.remove('hidden');
+    task.classList.add('error-message');
   } else {
     addErrorMessage.classList.add('hidden');
+    task.classList.remove('error-message');
     currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
     changeDisplays();
   };
@@ -53,7 +57,7 @@ function changeDisplays() {
   var timerSection = document.querySelector('.timer-wrapper');
   var currentPageTitle = document.querySelector('h2');
   timerSection.classList.toggle('hidden');
-  formSection.classList.toggle('hidden'); // CAN BE CHANGED
+  formSection.classList.toggle('hidden');
   currentPageTitle.innerText = 'Current Activity';
   updateTimerPage();
 };
@@ -62,9 +66,10 @@ function updateTimerPage() {
     var timerButton = document.querySelector('.start-time');
     var userTask = document.querySelector('.user-task');
     var clockTime = document.querySelector('.time');
-    timerButton.classList.add(`${currentActivity.category}-color`);
-    userTask.innerText = `${currentActivity.description}`;
-    clockTime.innerText = `${convertToClock(currentActivity.totalSeconds)}`;
+    // CHAKDED THE TIMER BUTTON CLASS TO AVTIVITY BORDER SO ONLY BORDER TOOK IN THE COLOR
+    timerButton.classList.add(`${currentActivity.category}-border`);
+    userTask.innerText = currentActivity.description;
+    clockTime.innerText = convertToClock(currentActivity.totalSeconds);
 };
 
 function isNumber(event) {
@@ -76,12 +81,13 @@ function isNumber(event) {
 
 function runTimer() {
   currentActivity.startTimer();
+  var startTimerButton = document.querySelector('.start-time');
+  startTimerButton.disabled = true;
   var outputTime = document.querySelector('.time');
   var refresher = setInterval(function(){
     if (currentActivity.secondsLeft() < 0) {
       clearInterval(refresher);
-      alert('TIMES UP');
-      outputTime.innerHTML = "00:00";
+      displayCompletedActivity();
     } else {
       outputTime.innerHTML = convertToClock(currentActivity.secondsLeft());
     };
@@ -99,6 +105,17 @@ function convertToClock(timeInSeconds) {
     return `0${minutes}:${seconds}`;
   };
   return `${minutes}:${seconds}`;
+
+};
+
+
+function displayCompletedActivity() {
+  var logButton = document.querySelector('.log-activity');
+  var outputTime = document.querySelector('.time');
+  logButton.classList.remove('hidden');
+
+  outputTime.innerHTML = "That was easier than CSS";
+  outputTime.classList.add('shrink-text');
 }
 
 
@@ -119,16 +136,13 @@ function updatePastActivities() {
 function displayPastActivities() {
   var activityWrapper = document.querySelector(".activity-wrapper");
   //  saveToStorage(pastActivities);
-  activityWrapper.innerHTML = ""; 
+  activityWrapper.innerHTML = "";
   pastActivities.forEach(function(activity) {
-    activityWrapper.insertAdjacentHTML("afterbegin", `     
+    activityWrapper.insertAdjacentHTML("afterbegin", `
       <article class="activity-cards" id=${activity.id}>
-        <span class="card-text">
-          <p class="card-category">${activity.category}</p>
-          <p class="card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
-          <br>
-          <p class="card-description">${activity.description}</p>
-        </span>
+        <p class="${currentActivity.category}-border card-category">${activity.category}</p>
+        <p class="${currentActivity.category}-border card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
+        <p class="card-description">${activity.description}</p>
       </article>
       `
      );
