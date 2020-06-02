@@ -9,13 +9,49 @@ document.addEventListener('click', function(event) {
   } else if (event.target.type === "submit") {
        validateInputs(event);
   } else if (event.target.classList.contains("start-time")) {
-      runTimer(event);
-  }
-    else if (event.target.classList.contains ("log-activity")) {
-      currentActivity.markComplete(currentActivity);
-      updatePastActivities();
-    }
+    runTimer(event);
+  } else if (event.target.classList.contains("log-activity")) {
+    currentActivity.markComplete(currentActivity);
+    updatePastActivities();
+    changeToCompletedDisplay();
+  } else if (event.target.classList.contains("create-new-act")) { 
+    viewHomePage(event);
+  }   
 });
+
+// function viewHomePage() {
+
+//   //alert("bye");
+//   var completedSection = document.querySelector('.completed-activity');
+//   var formSection = document.getElementById('form');
+//   var currentPageTitle = document.querySelector('h2');
+//   formSection.classList.toggle('hidden');
+//   completedSection.classList.toggle('hidden');
+//   currentPageTitle.innerText = 'New Activity';
+// }
+//   clearForm(event);
+// }
+
+// function clearForm(event) {
+//   // var formSection = document.getElementById('form')
+//   //formSection.reset();
+//   document.getElementById('form').reset();
+//   //var startTime = document.querySelector(".start-time")
+//   //startTime.disabled = false
+//   document.querySelector(".start-time").disabled = false; //must be called after reset()
+//   displayCategory(event);
+//   currentActivity = [];
+// } 
+
+function changeToCompletedDisplay() {
+ // alert("hi");
+  var timerSection = document.querySelector('.timer-wrapper');
+  var completedSection = document.querySelector('.completed-activity');
+  var currentPageTitle = document.querySelector('h2');
+  timerSection.classList.toggle('hidden');
+  completedSection.classList.toggle('hidden');
+  currentPageTitle.innerText = 'Completed Activity';
+}
 
 function displayCategory(event) {
     var categorySection = document.querySelector('.category-choice');
@@ -105,9 +141,7 @@ function convertToClock(timeInSeconds) {
     return `0${minutes}:${seconds}`;
   };
   return `${minutes}:${seconds}`;
-
 };
-
 
 function displayCompletedActivity() {
   var logButton = document.querySelector('.log-activity');
