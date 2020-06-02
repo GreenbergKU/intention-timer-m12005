@@ -72,12 +72,13 @@ function isNumber(event) {
 
 function runTimer() {
   currentActivity.startTimer();
+  var startTimerButton = document.querySelector('.start-time');
+  startTimerButton.disabled = true;
   var outputTime = document.querySelector('.time');
   var refresher = setInterval(function(){
     if (currentActivity.secondsLeft() < 0) {
       clearInterval(refresher);
-      alert('TIMES UP');
-      outputTime.innerHTML = "00:00";
+      displayCompletedActivity();
     } else {
       outputTime.innerHTML = convertToClock(currentActivity.secondsLeft());
     };
@@ -96,3 +97,13 @@ function convertToClock(timeInSeconds) {
   };
   return `${minutes}:${seconds}`;
 };
+
+
+function displayCompletedActivity() {
+  var logButton = document.querySelector('.log-activity');
+  var outputTime = document.querySelector('.time');
+  logButton.classList.remove('hidden');
+
+  outputTime.innerHTML = "That was easier than CSS";
+  outputTime.classList.add('shrink-text');
+}
