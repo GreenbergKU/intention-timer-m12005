@@ -14,13 +14,13 @@ document.addEventListener('click', function(event) {
       runTimer(event);
   }
 
-////// ADDITION 
-  // else if (event.target.classList.contains ("log-activity")) {
-  //    console.log("PRE-currentActivity before markComplete() = ", currentActivity)
-  //    //markComplete needs to be looked at
-  //    currentActivity.markComplete(currentActivity);
-  //    addToPast();
-  // }
+//// ADDITION 
+  else if (event.target.classList.contains ("log-activity")) {
+     console.log("PRE-currentActivity before markComplete() = ", currentActivity)
+     //markComplete needs to be looked at
+     currentActivity.markComplete(currentActivity);
+     addToPast();
+  }
 });
 
 function displayCategory(event) {

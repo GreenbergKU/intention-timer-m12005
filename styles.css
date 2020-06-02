@@ -270,7 +270,7 @@ h3 {
   pointer-events: none;
 }
 
-  /**** LOGGED ACTIVITY CARDS ****/
+/**** LOGGED ACTIVITY CARDS ****/
 .past-activity > h2 {
   margin-left: .6em;
 }
@@ -324,7 +324,7 @@ p.card-description {
   margin-bottom: 1em;
 }
 
-  /******* @media ********/
+/******* @media ********/
   
 @media screen and (max-width: 480px) {
   main {
