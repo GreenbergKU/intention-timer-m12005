@@ -1,6 +1,6 @@
 
 var currentActivity = new Activity;
-var savedActivites = [];
+var pastActivities = [];
 
 document.addEventListener('click', function(event) {
   event.preventDefault();
@@ -19,7 +19,7 @@ document.addEventListener('click', function(event) {
      console.log("PRE-currentActivity before markComplete() = ", currentActivity)
      //markComplete needs to be looked at
      currentActivity.markComplete(currentActivity);
-     addToPast();
+     updatePastActivities();
   }
 });
 
@@ -115,31 +115,38 @@ function convertToClock(secondsLeft) {
     return `0${minutes}:${seconds}`;
   };
   return `${minutes}:${seconds}`;
-};
+}
 
 
 // ////////// ADDITIONS
 
-// function addToPast() {
-//   savedActivites.push(currentActivity);
-//   //saveToStorage(pastActivities);
-//   console.log("savedActivites after addToPast() = ", savedActivites);
-// }
+function updatePastActivities() {
+  pastActivities.push(currentActivity);
+  displayPastActivities();
+  //  saveToStorage(pastActivities);
+  // COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
+  // MUST do markComplete first
+}
 
-// function displayMainPage() {
-//   var activityWrapper = document.querySelector(".activity-wrapper");
-//   activityWrapper.innerHTML = ""; 
-//   pastActivites.forEach(function(activity) {
-//     activityWrapper.insertAdjacentHTML("afterbegin", `     
-//       <article class="activity-cards" id=${activity.id}>
-//         <span class="card-text">
-//           <p class="card-category">${activity.category}</p>
-//           <p class="card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
-//           <br>
-//           <p class="card-description">Description and/or Task!</p>
-//         </span>
-//       </article>
-//       `
-//     )
-//   });
-// };
+// *************** RENDER FUNCTION ****************
+
+// COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
+// MUST do markComplete first
+function displayPastActivities() {
+  var activityWrapper = document.querySelector(".activity-wrapper");
+  //  saveToStorage(pastActivities);
+  activityWrapper.innerHTML = ""; 
+  pastActivities.forEach(function(activity) {
+    activityWrapper.insertAdjacentHTML("afterbegin", `     
+      <article class="activity-cards" id=${activity.id}>
+        <span class="card-text">
+          <p class="card-category">${activity.category}</p>
+          <p class="card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
+          <br>
+          <p class="card-description">${activity.description}</p>
+        </span>
+      </article>
+      `
+     );
+  });
+}

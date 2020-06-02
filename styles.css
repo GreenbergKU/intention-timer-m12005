@@ -281,7 +281,7 @@ h3 {
   margin-right: 1em;
   margin-bottom: 2em;
   margin-top: 0em;
-  background-color: cyan;
+  background-color:#2B2733;
   height: 85vh;
 }
 
@@ -322,6 +322,14 @@ p.card-category {
 
 p.card-description {
   margin-bottom: 1em;
+}
+
+p.NoCards-msg {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+  padding: 1em;
 }
 
 /******* @media ********/
