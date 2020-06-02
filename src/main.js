@@ -1,44 +1,52 @@
 var currentActivity = new Activity;
-var savedActivites = [];
+var pastActivities = [];
 
 document.addEventListener('click', function(event) {
-    event.preventDefault();
-    if (event.target.parentElement.classList.contains("category-choice")) {
-         displayCategory(event);
-    } else if (event.target.type === "submit") {
-         validateInputs();
-    } else if (event.target.classList.contains("start-time")) {
-        runTimer(event);
-    };
+  event.preventDefault();
+
+  if (event.target.parentElement.classList.contains("category-choice")) {
+       displayCategory(event);
+  } else if (event.target.type === "submit") {
+       validateInputs(event);
+  } else if (event.target.classList.contains("start-time")) {
+      runTimer(event);
+  }
+    else if (event.target.classList.contains ("log-activity")) {
+      currentActivity.markComplete(currentActivity);
+      updatePastActivities();
+    }
 });
 
 function displayCategory(event) {
     var categorySection = document.querySelector('.category-choice');
-
     for (var i = 1; i < categorySection.children.length; i++) {
         var categoryChild = categorySection.children[i];
         if (categoryChild.id === event.target.id) {
             currentActivity.category = event.target.name;
             categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
             categoryChild.classList.add(`${categoryChild.name}-color`);
+            // SPLIT SELECTED COLOR CLASS <--------------------------------------------------
+            categoryChild.classList.add(`${categoryChild.name}-border`);
         } else {
             categoryChild.childNodes[1].src = `./assets/${categoryChild.name}.svg`;
             categoryChild.classList.remove(`${categoryChild.name}-color`);
+            // SPLIT SELECTED COLLOR CLASS<--------------------------------------------------
+            categoryChild.classList.remove(`${categoryChild.name}-border`);
         };
     };
 }
-
 
 function validateInputs() {
   var task = document.getElementById('task-return');
   var minuteInput = document.getElementById('minute-return');
   var secondInput = document.getElementById('second-return');
   var addErrorMessage = document.querySelector('small');
-
   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
     addErrorMessage.classList.remove('hidden');
+    task.classList.add('error-message');
   } else {
     addErrorMessage.classList.add('hidden');
+    task.classList.remove('error-message');
     currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
     changeDisplays();
   };
@@ -49,7 +57,7 @@ function changeDisplays() {
   var timerSection = document.querySelector('.timer-wrapper');
   var currentPageTitle = document.querySelector('h2');
   timerSection.classList.toggle('hidden');
-  formSection.classList.toggle('hidden'); // CAN BE CHANGED
+  formSection.classList.toggle('hidden');
   currentPageTitle.innerText = 'Current Activity';
   updateTimerPage();
 };
@@ -58,7 +66,8 @@ function updateTimerPage() {
     var timerButton = document.querySelector('.start-time');
     var userTask = document.querySelector('.user-task');
     var clockTime = document.querySelector('.time');
-    timerButton.classList.add(`${currentActivity.category}-color`);
+    // CHAKDED THE TIMER BUTTON CLASS TO AVTIVITY BORDER SO ONLY BORDER TOOK IN THE COLOR
+    timerButton.classList.add(`${currentActivity.category}-border`);
     userTask.innerText = `${currentActivity.description}`;
     clockTime.innerText = `${convertToClock(currentActivity.totalSeconds)}`;
 };
@@ -96,6 +105,7 @@ function convertToClock(timeInSeconds) {
     return `0${minutes}:${seconds}`;
   };
   return `${minutes}:${seconds}`;
+
 };
 
 
@@ -106,4 +116,38 @@ function displayCompletedActivity() {
 
   outputTime.innerHTML = "That was easier than CSS";
   outputTime.classList.add('shrink-text');
+}
+
+
+// ////////// ADDITIONS
+
+function updatePastActivities() {
+  pastActivities.push(currentActivity);
+  displayPastActivities();
+  //  saveToStorage(pastActivities);
+  // COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
+  // MUST do markComplete first
+}
+
+// *************** RENDER FUNCTION ****************
+
+// COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
+// MUST do markComplete first
+function displayPastActivities() {
+  var activityWrapper = document.querySelector(".activity-wrapper");
+  //  saveToStorage(pastActivities);
+  activityWrapper.innerHTML = "";
+  pastActivities.forEach(function(activity) {
+    activityWrapper.insertAdjacentHTML("afterbegin", `
+      <article class="activity-cards" id=${activity.id}>
+        <span class="card-text">
+          <p class="card-category">${activity.category}</p>
+          <p class="card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
+          <br>
+          <p class="card-description">${activity.description}</p>
+        </span>
+      </article>
+      `
+     );
+  });
 }

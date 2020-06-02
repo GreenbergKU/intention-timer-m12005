@@ -77,14 +77,6 @@ form {
 }
 
 /* Styling */
-h1 {
-  margin: 0;
-  text-align: center;
-  color: #FFF;
-  font-size: 1em;
-  padding-top: 1em;
-  font-weight: bold;
-}
 
 body, html {
   height: 100%;
@@ -107,6 +99,15 @@ main {
   display: flex;
   width: 100%;
   height: 92vh;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  color: #FFF;
+  font-size: 1em;
+  padding-top: 1em;
+  font-weight: bold;
 }
 
 h2 {
@@ -243,8 +244,9 @@ h3 {
 .hidden {
   display: none;
 }
-
+/*  ADDED SCROLL TO PAST ACTIVITY */
 .past-activity {
+  overflow: scroll;
   display: grid;
   background-color: #2B2733;
   width: 30%;
@@ -255,9 +257,8 @@ h3 {
 .med-button,
 .ex-button {
   display: inline-block;
-  border-color: #CBC9CF;
   border-radius: 4%;
-  border-width: .2em;
+  border: .2em solid #CBC9CF;
   width: 12em;
   height: 5em;
   background-color: transparent;
@@ -265,19 +266,28 @@ h3 {
   color: #CBC9CF;
   outline: none;
 }
-
+/* SPLIT ALL THESE SO WE CAN TARGET ITEMS BETTER */
 .study-color {
   color: #B3FD78;
+}
+
+.study-border {
   border-color: #B3FD78;
 }
 
 .exercise-color {
   color: #FD9089;
+}
+
+.exercise-border {
   border-color: #FD9089;
 }
 
 .meditate-color {
   color: #BE8CE5;
+}
+
+.meditate-border {
   border-color: #BE8CE5;
 }
 
@@ -286,6 +296,66 @@ h3 {
   height: auto;
   pointer-events: none;
 }
+
+/**** ACTIVITY-CARDS ****/
+.past-activity > h2 {
+  margin-left: .6em;
+}
+
+.activity-wrapper {
+  display: inline-block;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 2em;
+  margin-top: 0em;
+  background-color:#2B2733;
+  height: 85vh;
+}
+
+article {
+  display: block;
+  border-radius: 2%;
+  margin-bottom: 1em;
+  margin-top: 0;
+  background-color: #46424D;
+  height: 80px;
+}
+
+.activity-cards p {
+  margin: 0;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: .8rem;
+}
+
+.card-text {
+  padding: 1em;
+}
+
+p.card-category {
+  border-right: white 3px solid;
+  line-height: .5;
+  padding: 0 0 2px 0;
+
+}
+.card-time {
+  border-right: white 3px solid;
+  line-height: 1.5;
+}
+
+p.card-description {
+  margin-bottom: 1em;
+}
+
+p.NoCards-msg {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+  padding: 1em;
+}
+
+/******* ACTIVITY-CARDS *********/
 
 @media screen and (max-width: 1150px) {
   .stud-button,
@@ -374,6 +444,7 @@ h3 {
   }
 
   .past-activity {
+    overflow: none;
     width: 100%;
     border: 0;
     border-top: 1px solid #46424D;

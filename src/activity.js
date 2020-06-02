@@ -22,10 +22,6 @@ class Activity {
      this.isCompleted = true;
      }
 
-
-
-
      saveToStorage() {
-
      }
-}
+   };
