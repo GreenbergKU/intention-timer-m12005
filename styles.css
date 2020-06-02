@@ -266,7 +266,62 @@ h3 {
   color: #CBC9CF;
   outline: none;
 }
-/* SPLIT ALL THESE SO WE CAN TARGET ITEMS BETTER */
+
+/**** ACTIVITY-CARDS ****/
+.past-activity > h2 {
+  margin-left: .6em;
+}
+
+.activity-wrapper {
+  display: inline-block;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 2em;
+  margin-top: 0em;
+  background-color:#2B2733;
+  height: 85vh;
+}
+
+.activity-cards {
+  display: block;
+  border-radius: 2%;
+  margin:0 1em 1em 1em;
+  padding: .75em;
+  background-color: #46424D;
+  height: 6em;
+}
+
+.card-category {
+  border-right:3px solid;
+  line-height: 1.1em;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: 900;
+}
+
+.card-time {
+  border-right: 3px solid;
+  line-height: 1.5;
+  font-size: 1.1em;
+  padding: .1em 0 0 0;
+  margin: 0 0 .4em 0;
+}
+
+.card-description {
+  padding-top: .2em;
+  margin: 0;
+  font-size: .85em;
+}
+
+.NoCards-msg {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  text-align: center;
+  margin: 0;
+  padding: 1em;
+}
+
 .study-color {
   color: #B3FD78;
 }
@@ -297,64 +352,6 @@ h3 {
   pointer-events: none;
 }
 
-/**** ACTIVITY-CARDS ****/
-.past-activity > h2 {
-  margin-left: .6em;
-}
-
-.activity-wrapper {
-  display: inline-block;
-  margin-left: 1em;
-  margin-right: 1em;
-  margin-bottom: 2em;
-  margin-top: 0em;
-  background-color:#2B2733;
-  height: 85vh;
-}
-
-article {
-  display: block;
-  border-radius: 2%;
-  margin-bottom: 1em;
-  margin-top: 0;
-  background-color: #46424D;
-  height: 80px;
-}
-
-.activity-cards p {
-  margin: 0;
-  margin-left: 1em;
-  margin-right: 1em;
-  font-size: .8rem;
-}
-
-.card-text {
-  padding: 1em;
-}
-
-p.card-category {
-  border-right: white 3px solid;
-  line-height: .5;
-  padding: 0 0 2px 0;
-
-}
-.card-time {
-  border-right: white 3px solid;
-  line-height: 1.5;
-}
-
-p.card-description {
-  margin-bottom: 1em;
-}
-
-p.NoCards-msg {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  text-align: center;
-  margin: 0;
-  padding: 1em;
-}
-
 /******* ACTIVITY-CARDS *********/
 
 @media screen and (max-width: 1150px) {
@@ -372,6 +369,18 @@ p.NoCards-msg {
   .ex-button {
     width: 7em;
     height: 5em;
+  }
+
+  .card-category {
+    font-size: .8em;
+  }
+
+  .card-time {
+    font-size: .9em;
+  }
+
+  .card-description {
+    font-size: .7em;
   }
 }
 

@@ -68,8 +68,8 @@ function updateTimerPage() {
     var clockTime = document.querySelector('.time');
     // CHAKDED THE TIMER BUTTON CLASS TO AVTIVITY BORDER SO ONLY BORDER TOOK IN THE COLOR
     timerButton.classList.add(`${currentActivity.category}-border`);
-    userTask.innerText = `${currentActivity.description}`;
-    clockTime.innerText = `${convertToClock(currentActivity.totalSeconds)}`;
+    userTask.innerText = currentActivity.description;
+    clockTime.innerText = convertToClock(currentActivity.totalSeconds);
 };
 
 function isNumber(event) {
@@ -140,12 +140,9 @@ function displayPastActivities() {
   pastActivities.forEach(function(activity) {
     activityWrapper.insertAdjacentHTML("afterbegin", `
       <article class="activity-cards" id=${activity.id}>
-        <span class="card-text">
-          <p class="card-category">${activity.category}</p>
-          <p class="card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
-          <br>
-          <p class="card-description">${activity.description}</p>
-        </span>
+        <p class="${currentActivity.category}-border card-category">${activity.category}</p>
+        <p class="${currentActivity.category}-border card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
+        <p class="card-description">${activity.description}</p>
       </article>
       `
      );
