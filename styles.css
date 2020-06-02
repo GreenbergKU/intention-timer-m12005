@@ -6,7 +6,7 @@
 form {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  grid-auto-rows: minmax(40px, auto);
+  grid-auto-rows: minmax(50px, auto);
   grid-template-areas:
     ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
     ". category-choice category-choice category-choice category-choice category-choice category-choice category-choice ."
@@ -106,11 +106,11 @@ header {
 main {
   display: flex;
   width: 100%;
-  height: 94vh;
+  height: 92vh;
 }
 
 h2 {
-  margin-left: .6em;
+  margin: .4em 0em .4em .6em;
 }
 
 .new-activity {
@@ -121,10 +121,10 @@ h2 {
 
 form {
   padding: 2em 0 2em 0;
-  height: 85vh;
+  height: 84vh;
   border-radius: 1%;
   background-color: #46424D;
-  margin: 1em;
+  margin: 0 1em 0em 1em;
 }
 
 .task-input,
@@ -177,6 +177,7 @@ small {
 .start-button {
   grid-area: start-activity;
   border-radius: 4%;
+  border: 0;
   align-self: baseline;
   height: 2em;
   min-width: 10em;
@@ -185,23 +186,22 @@ small {
 
 .timer-wrapper {
  text-align: center;
- padding: 2em 0 2em 0;
+ padding: 1em 0 2em 0;
  border-radius: 1%;
  background-color: #46424D;
  margin: 1em;
  display: grid;
  grid-template-columns: repeat(3, 1fr);
  grid-auto-rows: minmax(50px, auto);
-}
-
-.hidden {
-  display: none;
+ height: 81vh;
 }
 
 h3 {
   font-size: 1.4em;
   margin-bottom: 0;
   grid-area: 1/2/2/3;
+  margin-top: 1em;
+  align-self: baseline;
 }
 
 .time {
@@ -219,12 +219,24 @@ h3 {
   border: 3px solid white;
   border-radius: 90%;
   grid-area: 3/2/4/3;
-  width: 9em;
-  height: 9em;
+  width: 8em;
+  height: 8em;
   justify-self: center;
   font-size: 1.6em;
   margin-bottom: 1.5em;
   outline: none;
+}
+
+.log-activity{
+  border-radius: 4%;
+  height: 2em;
+  min-width: 10em;
+  grid-area: 4/2/5/3;
+  border: 0;
+}
+
+.hidden {
+  display: none;
 }
 
 .past-activity {
@@ -270,7 +282,7 @@ h3 {
   pointer-events: none;
 }
 
-/**** LOGGED ACTIVITY CARDS ****/
+/**** ACTIVITY-CARDS ****/
 .past-activity > h2 {
   margin-left: .6em;
 }
@@ -329,12 +341,30 @@ p.NoCards-msg {
   font-weight: 300;
   text-align: center;
   margin: 0;
-  padding: 1em;
+  padding: 1em; 
 }
 
-/******* @media ********/
-  
-@media screen and (max-width: 480px) {
+/******* ACTIVITY-CARDS *********/
+
+@media screen and (max-width: 1150px) {
+  .stud-button,
+  .med-button,
+  .ex-button {
+    width: 10em;
+    height: 5em;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .stud-button,
+  .med-button,
+  .ex-button {
+    width: 7em;
+    height: 5em;
+  }
+}
+
+@media screen and (max-width: 690px) {
   main {
     display: block;
   }
@@ -348,19 +378,20 @@ p.NoCards-msg {
   }
 
   form {
-    padding: 0 1em 2em 0;
-    height: 80vh;
-    /* grid-template-areas:
+    padding: 0 .5em 2em .5em;
+    height: 75vh;
+    grid-auto-rows: minmax(3vh, auto);
+    grid-template-areas:
       "category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice"
       "category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice"
       "category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice category-choice"
-      ". task-label task-label task-label task-label task-label task-label task-label ."
-      ". task-input task-input task-input task-input task-input task-input task-input ."
+      "task-label task-label task-label task-label task-label task-label task-label task-label task-label"
+      "task-input task-input task-input task-input task-input task-input task-input task-input task-input"
       ". . . . . . . . ."
-      "minute-label minute-label minute-label minute-label . second-label second-label second-label minute-label"
+      "minute-label minute-label minute-label minute-label . second-label second-label second-label second-label"
       "minute-input minute-input minute-input minute-input . second-input second-input second-input second-input"
       ". . . . . . . . ."
-      ". . . start-activity start-activity start-activity . . ."; */
+      ". start-activity start-activity start-activity start-activity start-activity start-activity start-activity .";
   }
 
   .new-activity {
@@ -395,7 +426,16 @@ p.NoCards-msg {
     width: 1.75em;
   }
 
+  .start-button {
+    border-radius: 6%;
+    width: 100%;
+    justify-self: center;
+  }
+
   .past-activity {
     width: 100%;
+    border: 0;
+    border-top: 1px solid #46424D;
+    margin-top: 2em;
   }
 }
