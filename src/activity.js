@@ -12,15 +12,6 @@ class Activity {
 
      startTimer() {
        this.endTime = Date.now() + this.totalSeconds * 1000;
-
-         // if (this.seconds < 10 && this.minutes < 10) {
-         //   return `0${this.minutes}:0${this.seconds}`;
-         // } else if (this.seconds < 10 && this.minutes >= 10) {
-         //   return `${this.minutes}:0${this.seconds}`;
-         // } else if (this.seconds >= 10 && this.minutes < 10) {
-         //   return `0${this.minutes}:${this.seconds}`;
-         // };
-         // return `${this.minutes}:${this.seconds}`;
      }
 
      secondsLeft() {
@@ -28,8 +19,11 @@ class Activity {
      }
 
      markComplete() {
-
+     this.isCompleted = true;
      }
+
+
+
 
      saveToStorage() {
 
