@@ -1,20 +1,26 @@
 var currentActivity = new Activity;
-var savedActivites = [];
+var pastActivities = [];
 
 document.addEventListener('click', function(event) {
-    event.preventDefault();
-    if (event.target.parentElement.classList.contains("category-choice")) {
-         displayCategory(event);
-    } else if (event.target.type === "submit") {
-         validateInputs();
-    } else if (event.target.classList.contains("start-time")) {
-        runTimer(event);
-    };
+  event.preventDefault();
+
+  // event.target = document.getElementByClassName("log-activity");
+  if (event.target.parentElement.classList.contains("category-choice")) {
+       displayCategory(event);
+  } else if (event.target.type === "submit") {
+       validateInputs(event);
+  } else if (event.target.classList.contains("start-time")) {
+      runTimer(event);
+  }
+//// ADDITION 
+    else if (event.target.classList.contains ("log-activity")) {
+      currentActivity.markComplete(currentActivity);
+      updatePastActivities();
+    }
 });
 
 function displayCategory(event) {
     var categorySection = document.querySelector('.category-choice');
-
     for (var i = 1; i < categorySection.children.length; i++) {
         var categoryChild = categorySection.children[i];
         if (categoryChild.id === event.target.id) {
@@ -28,13 +34,11 @@ function displayCategory(event) {
     };
 }
 
-
 function validateInputs() {
   var task = document.getElementById('task-return');
   var minuteInput = document.getElementById('minute-return');
   var secondInput = document.getElementById('second-return');
   var addErrorMessage = document.querySelector('small');
-
   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
     addErrorMessage.classList.remove('hidden');
   } else {
@@ -95,4 +99,38 @@ function convertToClock(timeInSeconds) {
     return `0${minutes}:${seconds}`;
   };
   return `${minutes}:${seconds}`;
-};
+}
+
+
+// ////////// ADDITIONS
+
+function updatePastActivities() {
+  pastActivities.push(currentActivity);
+  displayPastActivities();
+  //  saveToStorage(pastActivities);
+  // COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
+  // MUST do markComplete first
+}
+
+// *************** RENDER FUNCTION ****************
+
+// COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
+// MUST do markComplete first
+function displayPastActivities() {
+  var activityWrapper = document.querySelector(".activity-wrapper");
+  //  saveToStorage(pastActivities);
+  activityWrapper.innerHTML = ""; 
+  pastActivities.forEach(function(activity) {
+    activityWrapper.insertAdjacentHTML("afterbegin", `     
+      <article class="activity-cards" id=${activity.id}>
+        <span class="card-text">
+          <p class="card-category">${activity.category}</p>
+          <p class="card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
+          <br>
+          <p class="card-description">${activity.description}</p>
+        </span>
+      </article>
+      `
+     );
+  });
+}
