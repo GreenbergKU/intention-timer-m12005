@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
 }
-
 /*Grid layout */
 form {
   display: grid;
@@ -26,10 +25,10 @@ form {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-areas:
-  "select-cat select-cat select-cat . . . . ."
-  "stud-button stud-button . med-button med-button . ex-button ex-button"
-  "stud-button stud-button . med-button med-button . ex-button ex-button"
-  ". . . . . . . ."
+    "select-cat select-cat select-cat . . . . ."
+    "stud-button stud-button . med-button med-button . ex-button ex-button"
+    "stud-button stud-button . med-button med-button . ex-button ex-button"
+    ". . . . . . . .";
 }
 
 .category-choice p {
@@ -76,9 +75,9 @@ form {
   grid-area: second-input;
 }
 
-/* Styling */
-
-body, html {
+/******* Styling *******/
+body,
+html {
   height: 100%;
 }
 
@@ -112,11 +111,12 @@ h1 {
 h2 {
   margin: .4em 0em .4em .6em;
 }
+
 button {
   outline: none;
   border-radius: 4%;
-
 }
+
 .new-activity {
   background-color: #2B2733;
   width: 70%;
@@ -142,7 +142,7 @@ label {
   align-self: end;
 }
 
-input{
+input {
   color: #CBC9CF;
   outline: none;
   height: 2em;
@@ -252,7 +252,7 @@ h3 {
   margin-bottom: 1.5em;
 }
 
-.log-activity{
+.log-activity {
   border-radius: 4%;
   height: 2em;
   min-width: 10em;
@@ -263,7 +263,7 @@ h3 {
 .hidden {
   display: none;
 }
-/*  ADDED SCROLL TO PAST ACTIVITY */
+
 .past-activity {
   overflow: scroll;
   display: grid;
@@ -271,7 +271,6 @@ h3 {
   width: 30%;
   border-left: 3px solid #46424D;
 }
-
 
 .stud-button,
 .med-button,
@@ -285,7 +284,6 @@ h3 {
   color: #CBC9CF;
 }
 
-/**** ACTIVITY-CARDS ****/
 .past-activity > h2 {
   margin-left: .6em;
 }
@@ -370,8 +368,7 @@ h3 {
   pointer-events: none;
 }
 
-/******* ACTIVITY-CARDS *********/
-
+/******* Media *******/
 @media screen and (max-width: 1150px) {
   .stud-button,
   .med-button,
@@ -432,6 +429,11 @@ h3 {
       ". start-activity start-activity start-activity start-activity start-activity start-activity start-activity .";
   }
 
+  .timer-wrapper,
+  .completed-activity {
+    height: 75vh;
+  }
+
   .new-activity {
     width: 100%;
     height: 80vh;
@@ -480,7 +482,6 @@ h3 {
   }
 
   .activity-cards {
-    margin: 0;
+    margin: 0 0 1em 0;
   }
-
 }
