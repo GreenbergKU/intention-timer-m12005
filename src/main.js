@@ -30,20 +30,19 @@ function changeToCompletedDisplay() {
 }
 
 function displayCategory(event) {
-  var categorySection = document.querySelector('.category-choice');
-  for (var i = 1; i < categorySection.children.length; i++) {
-    var categoryChild = categorySection.children[i];
-    if (categoryChild.id === event.target.id) {
-      currentActivity.category = event.target.name;
-      categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
-      categoryChild.classList.add(`${categoryChild.name}-color`);
-      // SPLIT SELECTED COLOR CLASS <--------------------------------------------------
-      categoryChild.classList.add(`${categoryChild.name}-border`);
-    } else {
-      categoryChild.childNodes[1].src = `./assets/${categoryChild.name}.svg`;
-      categoryChild.classList.remove(`${categoryChild.name}-color`);
-      // SPLIT SELECTED COLLOR CLASS<--------------------------------------------------
-      categoryChild.classList.remove(`${categoryChild.name}-border`);
+    var categorySection = document.querySelector('.category-choice');
+    for (var i = 1; i < categorySection.children.length; i++) {
+        var categoryChild = categorySection.children[i];
+        if (categoryChild.id === event.target.id) {
+            currentActivity.category = event.target.name;
+            categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
+            categoryChild.classList.add(`${categoryChild.name}-color`);
+            categoryChild.classList.add(`${categoryChild.name}-border`);
+        } else {
+            categoryChild.childNodes[1].src = `./assets/${categoryChild.name}.svg`;
+            categoryChild.classList.remove(`${categoryChild.name}-color`);
+            categoryChild.classList.remove(`${categoryChild.name}-border`);
+        };
     };
   };
 }
@@ -72,17 +71,16 @@ function changeDisplays() {
   formSection.classList.toggle('hidden');
   currentPageTitle.innerText = 'Current Activity';
   updateTimerPage();
+  formSection.reset();
 };
 
 function updateTimerPage() {
   var timerButton = document.querySelector('.start-time');
   var userTask = document.querySelector('.user-task');
   var clockTime = document.querySelector('.time');
-  // CHAKDED THE TIMER BUTTON CLASS TO AVTIVITY BORDER SO ONLY BORDER TOOK IN THE COLOR
   timerButton.classList.add(`${currentActivity.category}-border`);
   userTask.innerText = currentActivity.description;
   clockTime.innerText = convertToClock(currentActivity.totalSeconds);
-};
 
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
@@ -152,7 +150,6 @@ function displayPastActivities() {
   });
 }
 
-
 function retrieveFromStorage(name) {
   var retrievedActivities = localStorage.getItem(name);
   pastActivities = JSON.parse(retrievedActivities);
@@ -163,6 +160,6 @@ function revive(array) {
   array.forEach(function(activity) {
     activity = new Activity(`${activity.id}, ${activity.category}, ${activity.description}, ${activity.minutes}, ${activity.seconds}`);
     array.push(activity);
-  })
+  });
   displayPastActivities();
 }
