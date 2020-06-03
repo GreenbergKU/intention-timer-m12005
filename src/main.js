@@ -15,7 +15,8 @@ document.addEventListener('click', function(event) {
     updatePastActivities();
     changeToCompletedDisplay();
   } else if (event.target.classList.contains("create-new-act")) { 
-    window.location.reload = (true);
+    alert("hi")
+    window.location.reload(true);
   }   
 });
 
