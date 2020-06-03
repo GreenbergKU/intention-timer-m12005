@@ -1,5 +1,5 @@
-var currentActivity = new Activity;
 var pastActivities = [];
+var currentActivity = new Activity;
 
 if (pastActivities !== null) {
   window.onload = function() {
@@ -112,8 +112,6 @@ function validateInputs() {
   };
 };
 
-// *************** RENDER FUNCTION ****************
-
 function updatePastActivities() {
   currentActivity.markComplete();
   pastActivities.push(currentActivity);
@@ -124,7 +122,7 @@ function updatePastActivities() {
 function retrieveFromStorage(name) {
   var retrievedActivities = localStorage.getItem('pastActivities');
   pastActivities = JSON.parse(retrievedActivities);
-}
+};
 
 function revive(array) {
   var savedActivity;
@@ -134,7 +132,7 @@ function revive(array) {
     pastActivities.push(savedActivity);
   });
   displayPastActivities();
-}
+};
 
 function runTimer() {
   currentActivity.startTimer();
@@ -169,4 +167,4 @@ function isNumber(event) {
   if (!(/[0-9]/.test(charNum))) {
     event.preventDefault();
   }
-}
+};
