@@ -81,4 +81,8 @@ See the original project [here](https://frontend.turing.io/projects/module-1/int
 
 ## Acknowledgements
 
+Eloquent Javascript by Marijin Haverbeke
+
+This was a great reference when it came to form validation and using regular expressions to validate our number inputs. Great book and great tool to have.
+
 Mentor mentions and why or other help outside the group
