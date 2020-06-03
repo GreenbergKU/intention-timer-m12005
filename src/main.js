@@ -5,17 +5,16 @@ document.addEventListener('click', function(event) {
   event.preventDefault();
 
   if (event.target.parentElement.classList.contains("category-choice")) {
-       displayCategory(event);
+        displayCategory(event);
   } else if (event.target.type === "submit") {
-       validateInputs(event);
+        validateInputs(event);
   } else if (event.target.classList.contains("start-time")) {
     runTimer(event);
   } else if (event.target.classList.contains("log-activity")) {
     currentActivity.markComplete(currentActivity);
     updatePastActivities();
     changeToCompletedDisplay();
-  } else if (event.target.classList.contains("create-new-act")) { 
-    alert("hi")
+  } else if (event.target.classList.contains("create-new-act")) {
     window.location.reload(true);
   }   
 });
@@ -31,22 +30,22 @@ function changeToCompletedDisplay() {
 }
 
 function displayCategory(event) {
-    var categorySection = document.querySelector('.category-choice');
-    for (var i = 1; i < categorySection.children.length; i++) {
-        var categoryChild = categorySection.children[i];
-        if (categoryChild.id === event.target.id) {
-            currentActivity.category = event.target.name;
-            categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
-            categoryChild.classList.add(`${categoryChild.name}-color`);
-            // SPLIT SELECTED COLOR CLASS <--------------------------------------------------
-            categoryChild.classList.add(`${categoryChild.name}-border`);
-        } else {
-            categoryChild.childNodes[1].src = `./assets/${categoryChild.name}.svg`;
-            categoryChild.classList.remove(`${categoryChild.name}-color`);
-            // SPLIT SELECTED COLLOR CLASS<--------------------------------------------------
-            categoryChild.classList.remove(`${categoryChild.name}-border`);
-        };
+  var categorySection = document.querySelector('.category-choice');
+  for (var i = 1; i < categorySection.children.length; i++) {
+    var categoryChild = categorySection.children[i];
+    if (categoryChild.id === event.target.id) {
+      currentActivity.category = event.target.name;
+      categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
+      categoryChild.classList.add(`${categoryChild.name}-color`);
+      // SPLIT SELECTED COLOR CLASS <--------------------------------------------------
+      categoryChild.classList.add(`${categoryChild.name}-border`);
+    } else {
+      categoryChild.childNodes[1].src = `./assets/${categoryChild.name}.svg`;
+      categoryChild.classList.remove(`${categoryChild.name}-color`);
+      // SPLIT SELECTED COLLOR CLASS<--------------------------------------------------
+      categoryChild.classList.remove(`${categoryChild.name}-border`);
     };
+  };
 }
 
 function validateInputs() {
@@ -76,18 +75,18 @@ function changeDisplays() {
 };
 
 function updateTimerPage() {
-    var timerButton = document.querySelector('.start-time');
-    var userTask = document.querySelector('.user-task');
-    var clockTime = document.querySelector('.time');
-    // CHAKDED THE TIMER BUTTON CLASS TO AVTIVITY BORDER SO ONLY BORDER TOOK IN THE COLOR
-    timerButton.classList.add(`${currentActivity.category}-border`);
-    userTask.innerText = currentActivity.description;
-    clockTime.innerText = convertToClock(currentActivity.totalSeconds);
+  var timerButton = document.querySelector('.start-time');
+  var userTask = document.querySelector('.user-task');
+  var clockTime = document.querySelector('.time');
+  // CHAKDED THE TIMER BUTTON CLASS TO AVTIVITY BORDER SO ONLY BORDER TOOK IN THE COLOR
+  timerButton.classList.add(`${currentActivity.category}-border`);
+  userTask.innerText = currentActivity.description;
+  clockTime.innerText = convertToClock(currentActivity.totalSeconds);
 };
 
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
-  if(!(/[0-9]/.test(charNum))){
+  if (!(/[0-9]/.test(charNum))) {
     event.preventDefault();
   }
 }
@@ -129,24 +128,17 @@ function displayCompletedActivity() {
   outputTime.classList.add('shrink-text');
 }
 
-
-// ////////// ADDITIONS
-
 function updatePastActivities() {
+  currentActivity.markComplete();
   pastActivities.push(currentActivity);
-  displayPastActivities();
-  //  saveToStorage(pastActivities);
-  // COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
-  // MUST do markComplete first
-}
+  currentActivity.saveToStorage(pastActivities);
+  displayPastActivities();  
+} 
 
 // *************** RENDER FUNCTION ****************
 
-// COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
-// MUST do markComplete first
 function displayPastActivities() {
   var activityWrapper = document.querySelector(".activity-wrapper");
-  //  saveToStorage(pastActivities);
   activityWrapper.innerHTML = "";
   pastActivities.forEach(function(activity) {
     activityWrapper.insertAdjacentHTML("afterbegin", `
@@ -158,4 +150,19 @@ function displayPastActivities() {
       `
      );
   });
+}
+
+
+function retrieveFromStorage(name) {
+  var retrievedActivities = localStorage.getItem(name);
+  pastActivities = JSON.parse(retrievedActivities);
+  //pastActivities === null ? validateInputs : revive(pastActivities);
+}
+
+function revive(array) {
+  array.forEach(function(activity) {
+    activity = new Activity(`${activity.id}, ${activity.category}, ${activity.description}, ${activity.minutes}, ${activity.seconds}`);
+    array.push(activity);
+  })
+  displayPastActivities();
 }
