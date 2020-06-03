@@ -15,33 +15,9 @@ document.addEventListener('click', function(event) {
     updatePastActivities();
     changeToCompletedDisplay();
   } else if (event.target.classList.contains("create-new-act")) { 
-    viewHomePage(event);
+    window.location.reload = (true);
   }   
 });
-
-// function viewHomePage() {
-
-//   //alert("bye");
-//   var completedSection = document.querySelector('.completed-activity');
-//   var formSection = document.getElementById('form');
-//   var currentPageTitle = document.querySelector('h2');
-//   formSection.classList.toggle('hidden');
-//   completedSection.classList.toggle('hidden');
-//   currentPageTitle.innerText = 'New Activity';
-// }
-//   clearForm(event);
-// }
-
-// function clearForm(event) {
-//   // var formSection = document.getElementById('form')
-//   //formSection.reset();
-//   document.getElementById('form').reset();
-//   //var startTime = document.querySelector(".start-time")
-//   //startTime.disabled = false
-//   document.querySelector(".start-time").disabled = false; //must be called after reset()
-//   displayCategory(event);
-//   currentActivity = [];
-// } 
 
 function changeToCompletedDisplay() {
  // alert("hi");
