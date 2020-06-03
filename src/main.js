@@ -5,17 +5,29 @@ document.addEventListener('click', function(event) {
   event.preventDefault();
 
   if (event.target.parentElement.classList.contains("category-choice")) {
-       displayCategory(event);
+        displayCategory(event);
   } else if (event.target.type === "submit") {
-       validateInputs(event);
+        validateInputs(event);
   } else if (event.target.classList.contains("start-time")) {
-      runTimer(event);
-  }
-    else if (event.target.classList.contains ("log-activity")) {
-      currentActivity.markComplete(currentActivity);
-      updatePastActivities();
-    }
+    runTimer(event);
+  } else if (event.target.classList.contains("log-activity")) {
+    currentActivity.markComplete(currentActivity);
+    updatePastActivities();
+    changeToCompletedDisplay();
+  } else if (event.target.classList.contains("create-new-act")) {
+    window.location.reload(true);
+  }   
 });
+
+function changeToCompletedDisplay() {
+ // alert("hi");
+  var timerSection = document.querySelector('.timer-wrapper');
+  var completedSection = document.querySelector('.completed-activity');
+  var currentPageTitle = document.querySelector('h2');
+  timerSection.classList.toggle('hidden');
+  completedSection.classList.toggle('hidden');
+  currentPageTitle.innerText = 'Completed Activity';
+}
 
 function displayCategory(event) {
     var categorySection = document.querySelector('.category-choice');
@@ -32,6 +44,7 @@ function displayCategory(event) {
             categoryChild.classList.remove(`${categoryChild.name}-border`);
         };
     };
+  };
 }
 
 function validateInputs() {
@@ -59,21 +72,19 @@ function changeDisplays() {
   currentPageTitle.innerText = 'Current Activity';
   updateTimerPage();
   formSection.reset();
-
 };
 
 function updateTimerPage() {
-    var timerButton = document.querySelector('.start-time');
-    var userTask = document.querySelector('.user-task');
-    var clockTime = document.querySelector('.time');
-    timerButton.classList.add(`${currentActivity.category}-border`);
-    userTask.innerText = currentActivity.description;
-    clockTime.innerText = convertToClock(currentActivity.totalSeconds);
-};
+  var timerButton = document.querySelector('.start-time');
+  var userTask = document.querySelector('.user-task');
+  var clockTime = document.querySelector('.time');
+  timerButton.classList.add(`${currentActivity.category}-border`);
+  userTask.innerText = currentActivity.description;
+  clockTime.innerText = convertToClock(currentActivity.totalSeconds);
 
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
-  if(!(/[0-9]/.test(charNum))){
+  if (!(/[0-9]/.test(charNum))) {
     event.preventDefault();
   }
 }
@@ -104,9 +115,7 @@ function convertToClock(timeInSeconds) {
     return `0${minutes}:${seconds}`;
   };
   return `${minutes}:${seconds}`;
-
 };
-
 
 function displayCompletedActivity() {
   var logButton = document.querySelector('.log-activity');
@@ -117,24 +126,17 @@ function displayCompletedActivity() {
   outputTime.classList.add('shrink-text');
 }
 
-
-// ////////// ADDITIONS
-
 function updatePastActivities() {
+  currentActivity.markComplete();
   pastActivities.push(currentActivity);
-  displayPastActivities();
-  //  saveToStorage(pastActivities);
-  // COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
-  // MUST do markComplete first
-}
+  currentActivity.saveToStorage(pastActivities);
+  displayPastActivities();  
+} 
 
 // *************** RENDER FUNCTION ****************
 
-// COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
-// MUST do markComplete first
 function displayPastActivities() {
   var activityWrapper = document.querySelector(".activity-wrapper");
-  //  saveToStorage(pastActivities);
   activityWrapper.innerHTML = "";
   pastActivities.forEach(function(activity) {
     activityWrapper.insertAdjacentHTML("afterbegin", `
@@ -146,4 +148,18 @@ function displayPastActivities() {
       `
      );
   });
+}
+
+function retrieveFromStorage(name) {
+  var retrievedActivities = localStorage.getItem(name);
+  pastActivities = JSON.parse(retrievedActivities);
+  //pastActivities === null ? validateInputs : revive(pastActivities);
+}
+
+function revive(array) {
+  array.forEach(function(activity) {
+    activity = new Activity(`${activity.id}, ${activity.category}, ${activity.description}, ${activity.minutes}, ${activity.seconds}`);
+    array.push(activity);
+  });
+  displayPastActivities();
 }
