@@ -1,6 +1,13 @@
 var currentActivity = new Activity;
 var pastActivities = [];
 
+if (pastActivities !== null) {
+  window.onload = function(){
+    retrieveFromStorage();
+    revive(pastActivities);
+  }
+}
+
 document.addEventListener('click', function(event) {
   event.preventDefault();
 
@@ -16,7 +23,7 @@ document.addEventListener('click', function(event) {
     changeToCompletedDisplay();
   } else if (event.target.classList.contains("create-new-act")) {
     window.location.reload(true);
-  }   
+  }
 });
 
 function changeToCompletedDisplay() {
@@ -45,7 +52,6 @@ function displayCategory(event) {
         };
     };
   };
-}
 
 function validateInputs() {
   var task = document.getElementById('task-return');
@@ -71,7 +77,6 @@ function changeDisplays() {
   formSection.classList.toggle('hidden');
   currentPageTitle.innerText = 'Current Activity';
   updateTimerPage();
-  formSection.reset();
 };
 
 function updateTimerPage() {
@@ -81,6 +86,7 @@ function updateTimerPage() {
   timerButton.classList.add(`${currentActivity.category}-border`);
   userTask.innerText = currentActivity.description;
   clockTime.innerText = convertToClock(currentActivity.totalSeconds);
+}
 
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
@@ -130,8 +136,8 @@ function updatePastActivities() {
   currentActivity.markComplete();
   pastActivities.push(currentActivity);
   currentActivity.saveToStorage(pastActivities);
-  displayPastActivities();  
-} 
+  displayPastActivities();
+}
 
 // *************** RENDER FUNCTION ****************
 
@@ -141,25 +147,25 @@ function displayPastActivities() {
   pastActivities.forEach(function(activity) {
     activityWrapper.insertAdjacentHTML("afterbegin", `
       <article class="activity-cards" id=${activity.id}>
-        <p class="${currentActivity.category}-border card-category">${activity.category}</p>
-        <p class="${currentActivity.category}-border card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
+        <p class="${activity.category}-border card-category">${activity.category}</p>
+        <p class="${activity.category}-border card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
         <p class="card-description">${activity.description}</p>
       </article>
-      `
-     );
+      `);
   });
 }
 
 function retrieveFromStorage(name) {
-  var retrievedActivities = localStorage.getItem(name);
+  var retrievedActivities = localStorage.getItem('pastActivities');
   pastActivities = JSON.parse(retrievedActivities);
-  //pastActivities === null ? validateInputs : revive(pastActivities);
 }
 
 function revive(array) {
+  var savedActivity;
+  pastActivities = [];
   array.forEach(function(activity) {
-    activity = new Activity(`${activity.id}, ${activity.category}, ${activity.description}, ${activity.minutes}, ${activity.seconds}`);
-    array.push(activity);
+    savedActivity = new Activity(activity.category, activity.description, activity.minutes, activity.seconds, activity.id);
+    pastActivities.push(savedActivity);
   });
   displayPastActivities();
 }
