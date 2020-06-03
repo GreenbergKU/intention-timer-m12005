@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <html lang="en">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,33 +19,33 @@
           <div class="category-choice">
             <p>Select a Catagory:</p>
             <button class="stud-button" type="button" name="study" value="study" id="stud-button">
-              <img class="logos" src="assets/study.svg" alt="book icon"><br>Study
+              <img class="logos" src="assets/study.svg" alt="study button"><br>Study
             </button>
             <button class="med-button" type="button" name="meditate" value="meditate" id="med-button">
-              <img class="logos" src="assets/meditate.svg" alt="mandala icon"><br>Meditate
+              <img class="logos" src="assets/meditate.svg" alt="meditation button"><br>Meditate
             </button>
             <button class="ex-button" type="button" name="exercise" value="exercise" id="ex-button">
-              <img class="logos" src="assets/exercise.svg" alt="sneaker icon"><br>Exercise
+              <img class="logos" src="assets/exercise.svg" alt="exercise button"><br>Exercise
             </button>
           </div>
           <label for="task" class="task-label">What would you like to accomplish during this time?</label>
           <input class="task-input" type="text" name="task" id="task-return" maxlength="70">
-          <small class="hidden"><img class="warning" src="assets/warning.svg"> Please Fill In All Fields To Continue!</small>
+          <small class="hidden"><img class="warning" src="assets/warning.svg" alt="caution symbol"> Please Fill In All Fields To Continue!</small>
           <label for="minutes" class="minute-label">Minutes</label>
-          <input class="minute-input" type="number"  onkeypress="isNumber(event)" name="minutes" id="minute-return"  min="0" max="59">
+          <input class="minute-input" type="number" onkeypress="isNumber(event)" name="minutes" id="minute-return" min="0" max="59">
           <label for="seconds" class="second-label">Seconds</label>
           <input class="second-input"type="number" onkeypress="isNumber(event)" name="seconds" id="second-return" min="0" max="59">
           <button class="start-button" type="submit" name="start" id="start-activity-button">START ACTIVITY</button>
         </form>
-          <div class="timer-wrapper hidden">
-            <h3 class='user-task'>Deep Breathing</h3>
-            <p class='time'>05:00</p>
-            <button type="button" name="button" class='start-time'>START</button>
-            <button type="button" name="button" class='log-activity hidden'>LOG ACTIVITY</button>
-          </div>
-          <div class="completed-activity hidden">
-              <button type="button" name="button" class="create-new-act">CREATE A NEW ACTIVITY</button>
-          </div>
+        <div class="timer-wrapper hidden">
+          <h3 class="user-task">Deep Breathing</h3>
+          <p class="time">05:00</p>
+          <button type="button" name="button" class="start-time">START</button>
+          <button type="button" name="button" class="log-activity hidden">LOG ACTIVITY</button>
+        </div>
+        <div class="completed-activity hidden">
+            <button type="button" name="button" class="create-new-act">CREATE A NEW ACTIVITY</button>
+        </div>
       </section>
       <section class="past-activity">
         <h2>Past Activity</h2>
@@ -60,16 +60,3 @@
     <script src="./src/main.js"></script>
   </body>
 </html>
-
-<!--
-      **** activity-cards HTML ****
-
-          <article class="activity-cards">
-            <span class="card-text">
-              <p class="card-category">category</p>
-              <p class="card-time">X MIN : Y SEC</p>
-              <br>
-              <p class="card-desc">Description and/or Task!</p>
-            </span>
-          </article>
--->
