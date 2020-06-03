@@ -112,7 +112,11 @@ h1 {
 h2 {
   margin: .4em 0em .4em .6em;
 }
+button {
+  outline: none;
+  border-radius: 4%;
 
+}
 .new-activity {
   background-color: #2B2733;
   width: 70%;
@@ -246,7 +250,6 @@ h3 {
   justify-self: center;
   font-size: 1.6em;
   margin-bottom: 1.5em;
-  outline: none;
 }
 
 .log-activity{
@@ -274,14 +277,12 @@ h3 {
 .med-button,
 .ex-button {
   display: inline-block;
-  border-radius: 4%;
   border: .2em solid #CBC9CF;
   width: 12em;
   height: 5em;
   background-color: transparent;
   font-weight: 400;
   color: #CBC9CF;
-  outline: none;
 }
 
 /**** ACTIVITY-CARDS ****/
@@ -301,16 +302,18 @@ h3 {
 
 .activity-cards {
   display: block;
+  box-shadow: 11px 8px 4px 2px #26222D;
   border-radius: 2%;
   margin:0 1em 1em 1em;
   padding: .75em;
   background-color: #46424D;
-  height: 6em;
+  height: 5em;
 }
 
 .card-category {
+  text-transform: capitalize;
   border-right:3px solid;
-  line-height: 1.1em;
+  line-height: .8em;
   padding: 0;
   margin: 0;
   font-family: sans-serif;
@@ -319,7 +322,7 @@ h3 {
 
 .card-time {
   border-right: 3px solid;
-  line-height: 1.5;
+  line-height: 1em;
   font-size: 1.1em;
   padding: .1em 0 0 0;
   margin: 0 0 .4em 0;
@@ -332,8 +335,6 @@ h3 {
 }
 
 .NoCards-msg {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
   text-align: center;
   margin: 0;
   padding: 1em;
@@ -450,13 +451,14 @@ h3 {
   .stud-button,
   .med-button,
   .ex-button {
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: space-around;
+    line-height: .4;
     width: 12em;
     height: 3em;
+    margin: .3em 0;
     padding: 1em;
-    margin: .3em;
   }
 
   .logos {
@@ -476,4 +478,9 @@ h3 {
     border-top: 1px solid #46424D;
     margin-top: 2em;
   }
+
+  .activity-cards {
+    margin: 0;
+  }
+
 }
