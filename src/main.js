@@ -1,38 +1,60 @@
 var currentActivity = new Activity;
 var pastActivities = [];
 
+if (pastActivities !== null) {
+  window.onload = function() {
+    retrieveFromStorage();
+    revive(pastActivities);
+  }
+}
+
 document.addEventListener('click', function(event) {
   event.preventDefault();
 
   if (event.target.parentElement.classList.contains("category-choice")) {
-       displayCategory(event);
+    displayCategory(event);
   } else if (event.target.type === "submit") {
-       validateInputs(event);
+    if (validateInputs(event)) {
+      updateTimerPage();
+      changeDisplay('Current Activity');
+    };
   } else if (event.target.classList.contains("start-time")) {
-      runTimer(event);
+    runTimer(event);
+  } else if (event.target.classList.contains("log-activity")) {
+    // currentActivity.markComplete(currentActivity);
+    updatePastActivities();
+    changeDisplay('Completed Activity');
+  } else if (event.target.classList.contains("create-new-act")) {
+    changeDisplay('New Activity')
   }
-    else if (event.target.classList.contains ("log-activity")) {
-      currentActivity.markComplete(currentActivity);
-      updatePastActivities();
-    }
 });
 
+// function changeToCompletedDisplay() {
+//  // alert("hi");
+//   var timerSection = document.querySelector('.timer-wrapper');
+//   var completedSection = document.querySelector('.completed-activity');
+//   var currentPageTitle = document.querySelector('h2');
+//   timerSection.classList.toggle('hidden');
+//   completedSection.classList.toggle('hidden');
+//   currentPageTitle.innerText = 'Completed Activity';
+// }
+
 function displayCategory(event) {
-    var categorySection = document.querySelector('.category-choice');
-    for (var i = 1; i < categorySection.children.length; i++) {
-        var categoryChild = categorySection.children[i];
-        if (categoryChild.id === event.target.id) {
-            currentActivity.category = event.target.name;
-            categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
-            categoryChild.classList.add(`${categoryChild.name}-color`);
-            categoryChild.classList.add(`${categoryChild.name}-border`);
-        } else {
-            categoryChild.childNodes[1].src = `./assets/${categoryChild.name}.svg`;
-            categoryChild.classList.remove(`${categoryChild.name}-color`);
-            categoryChild.classList.remove(`${categoryChild.name}-border`);
-        };
+  var categorySection = document.querySelector('.category-choice');
+  for (var i = 1; i < categorySection.children.length; i++) {
+    var categoryChild = categorySection.children[i];
+    if (categoryChild.id === event.target.id) {
+      currentActivity.category = event.target.name;
+      categoryChild.childNodes[1].src = `./assets/${categoryChild.name}-active.svg`;
+      categoryChild.classList.add(`${categoryChild.name}-color`);
+      categoryChild.classList.add(`${categoryChild.name}-border`);
+    } else {
+      categoryChild.childNodes[1].src = `./assets/${categoryChild.name}.svg`;
+      categoryChild.classList.remove(`${categoryChild.name}-color`);
+      categoryChild.classList.remove(`${categoryChild.name}-border`);
     };
-}
+  };
+};
 
 function validateInputs() {
   var task = document.getElementById('task-return');
@@ -42,38 +64,38 @@ function validateInputs() {
   if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
     addErrorMessage.classList.remove('hidden');
     task.classList.add('error-message');
+    return false;
   } else {
     addErrorMessage.classList.add('hidden');
     task.classList.remove('error-message');
     currentActivity = new Activity(currentActivity.category, task.value.trim(), parseInt(minuteInput.value), parseInt(secondInput.value));
-    changeDisplays();
+    return true;
+    // changeDisplays();
   };
 };
 
-function changeDisplays() {
-  var formSection = document.getElementById('form');
-  var timerSection = document.querySelector('.timer-wrapper');
-  var currentPageTitle = document.querySelector('h2');
-  timerSection.classList.toggle('hidden');
-  formSection.classList.toggle('hidden');
-  currentPageTitle.innerText = 'Current Activity';
-  updateTimerPage();
-  formSection.reset();
-
-};
+// function changeDisplays() {
+//   var formSection = document.getElementById('form');
+//   var timerSection = document.querySelector('.timer-wrapper');
+//   var currentPageTitle = document.querySelector('h2');
+//   timerSection.classList.toggle('hidden');
+//   formSection.classList.toggle('hidden');
+//   currentPageTitle.innerText = 'Current Activity';
+//   updateTimerPage();
+// };
 
 function updateTimerPage() {
-    var timerButton = document.querySelector('.start-time');
-    var userTask = document.querySelector('.user-task');
-    var clockTime = document.querySelector('.time');
-    timerButton.classList.add(`${currentActivity.category}-border`);
-    userTask.innerText = currentActivity.description;
-    clockTime.innerText = convertToClock(currentActivity.totalSeconds);
-};
+  var timerButton = document.querySelector('.start-time');
+  var userTask = document.querySelector('.user-task');
+  var clockTime = document.querySelector('.time');
+  timerButton.classList.add(`${currentActivity.category}-border`);
+  userTask.innerText = currentActivity.description;
+  clockTime.innerText = convertToClock(currentActivity.totalSeconds);
+}
 
 function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
-  if(!(/[0-9]/.test(charNum))){
+  if (!(/[0-9]/.test(charNum))) {
     event.preventDefault();
   }
 }
@@ -83,7 +105,7 @@ function runTimer() {
   var startTimerButton = document.querySelector('.start-time');
   startTimerButton.disabled = true;
   var outputTime = document.querySelector('.time');
-  var refresher = setInterval(function(){
+  var refresher = setInterval(function() {
     if (currentActivity.secondsLeft() < 0) {
       clearInterval(refresher);
       displayCompletedActivity();
@@ -104,9 +126,7 @@ function convertToClock(timeInSeconds) {
     return `0${minutes}:${seconds}`;
   };
   return `${minutes}:${seconds}`;
-
 };
-
 
 function displayCompletedActivity() {
   var logButton = document.querySelector('.log-activity');
@@ -117,33 +137,59 @@ function displayCompletedActivity() {
   outputTime.classList.add('shrink-text');
 }
 
-
-// ////////// ADDITIONS
-
 function updatePastActivities() {
+  currentActivity.markComplete();
   pastActivities.push(currentActivity);
+  currentActivity.saveToStorage(pastActivities);
   displayPastActivities();
-  //  saveToStorage(pastActivities);
-  // COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
-  // MUST do markComplete first
 }
 
 // *************** RENDER FUNCTION ****************
 
-// COULD EVENTUALLY INCLUDE: saveToStorage(pastActivities)
-// MUST do markComplete first
 function displayPastActivities() {
   var activityWrapper = document.querySelector(".activity-wrapper");
-  //  saveToStorage(pastActivities);
   activityWrapper.innerHTML = "";
   pastActivities.forEach(function(activity) {
     activityWrapper.insertAdjacentHTML("afterbegin", `
       <article class="activity-cards" id=${activity.id}>
-        <p class="${currentActivity.category}-border card-category">${activity.category}</p>
-        <p class="${currentActivity.category}-border card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
+        <p class="${activity.category}-border card-category">${activity.category}</p>
+        <p class="${activity.category}-border card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
         <p class="card-description">${activity.description}</p>
       </article>
-      `
-     );
+      `);
   });
+}
+
+function changeDisplay(titleOfPage) {
+  var formSection = document.getElementById('form');
+  var timerSection = document.querySelector('.timer-wrapper');
+  var completedSection = document.querySelector('.completed-activity');
+  var currentPageTitle = document.querySelector('h2');
+
+  currentPageTitle.innerText = titleOfPage;
+  timerSection.classList.add('hidden');
+  formSection.classList.add('hidden');
+  completedSection.classList.add('hidden');
+  if (titleOfPage === 'New Activity') {
+    window.location.reload(true);
+  } else if (titleOfPage === 'Current Activity') {
+    timerSection.classList.remove('hidden');
+  } else if (titleOfPage === 'Completed Activity') {
+    completedSection.classList.remove('hidden');
+  };
+};
+
+function retrieveFromStorage(name) {
+  var retrievedActivities = localStorage.getItem('pastActivities');
+  pastActivities = JSON.parse(retrievedActivities);
+}
+
+function revive(array) {
+  var savedActivity;
+  pastActivities = [];
+  array.forEach(function(activity) {
+    savedActivity = new Activity(activity.category, activity.description, activity.minutes, activity.seconds, activity.id);
+    pastActivities.push(savedActivity);
+  });
+  displayPastActivities();
 }
