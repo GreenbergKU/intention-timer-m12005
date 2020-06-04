@@ -1,43 +1,41 @@
-var pastActivities = [];
 var currentActivity = new Activity;
+var pastActivities = [];
 
 if (pastActivities !== null) {
-  window.onload = function() {
+  window.onload = function loadStorage() {
     retrieveFromStorage();
     revive(pastActivities);
-  }
-}
+  };
+};
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function delegate(event) {
   event.preventDefault();
-
-  if (event.target.parentElement.classList.contains("category-choice")) {
+  if (event.target.parentElement.classList.contains('category-choice')) {
     displayCategory(event);
-  } else if (event.target.type === "submit") {
-    if (validateInputs(event)) {
+  } else if (event.target.type === 'submit') {
+    if (validateInputs()) {
       updateTimerPage();
       changeDisplay('Current Activity');
     };
-  } else if (event.target.classList.contains("start-time")) {
+  } else if (event.target.classList.contains('start-time')) {
     runTimer(event);
-  } else if (event.target.classList.contains("log-activity")) {
+  } else if (event.target.classList.contains('log-activity')) {
     updatePastActivities();
     changeDisplay('Completed Activity');
-  } else if (event.target.classList.contains("create-new-act")) {
-    changeDisplay('New Activity')
-  }
+  } else if (event.target.classList.contains('create-new-act')) {
+    changeDisplay('New Activity');
+  };
 });
 
 function changeDisplay(titleOfPage) {
-  var formSection = document.getElementById('form');
-  var timerSection = document.querySelector('.timer-wrapper');
   var completedSection = document.querySelector('.completed-activity');
   var currentPageTitle = document.querySelector('h2');
-
+  var formSection = document.getElementById('form');
+  var timerSection = document.querySelector('.timer-wrapper');
   currentPageTitle.innerText = titleOfPage;
-  timerSection.classList.add('hidden');
-  formSection.classList.add('hidden');
   completedSection.classList.add('hidden');
+  formSection.classList.add('hidden');
+  timerSection.classList.add('hidden');
   if (titleOfPage === 'New Activity') {
     window.location.reload(true);
   } else if (titleOfPage === 'Current Activity') {
@@ -65,42 +63,46 @@ function displayCategory(event) {
 };
 
 function updateTimerPage() {
+  var outputTime = document.querySelector('.time');  
   var timerButton = document.querySelector('.start-time');
   var userTask = document.querySelector('.user-task');
-  var clockTime = document.querySelector('.time');
   timerButton.classList.add(`${currentActivity.category}-border`);
+  outputTime.innerText = convertToClock(currentActivity.totalSeconds);
   userTask.innerText = currentActivity.description;
-  clockTime.innerText = convertToClock(currentActivity.totalSeconds);
-}
+
+};
 
 function displayCompletedActivity() {
   var logButton = document.querySelector('.log-activity');
   var outputTime = document.querySelector('.time');
+  var timerButton = document.querySelector('.start-time');
   logButton.classList.remove('hidden');
-  outputTime.innerHTML = "That was easier than CSS";
   outputTime.classList.add('shrink-text');
-}
+  outputTime.innerHTML = 'That was easier than CSS';
+  timerButton.innerHTML = 'COMPLETED!';
+};
 
 function displayPastActivities() {
-  var activityWrapper = document.querySelector(".activity-wrapper");
-  activityWrapper.innerHTML = "";
+  var activityWrapper = document.querySelector('.activity-wrapper');
+  activityWrapper.innerHTML = '';
   pastActivities.forEach(function(activity) {
-    activityWrapper.insertAdjacentHTML("afterbegin", `
+    activityWrapper.insertAdjacentHTML('afterbegin', `
       <article class="activity-cards" id=${activity.id}>
         <p class="${activity.category}-border card-category">${activity.category}</p>
         <p class="${activity.category}-border card-time">${activity.minutes} MIN : ${activity.seconds} SEC</p>
         <p class="card-description">${activity.description}</p>
       </article>
-      `);
+      `
+    );
   });
-}
+};
 
 function validateInputs() {
-  var task = document.getElementById('task-return');
+  var addErrorMessage = document.querySelector('small');
   var minuteInput = document.getElementById('minute-return');
   var secondInput = document.getElementById('second-return');
-  var addErrorMessage = document.querySelector('small');
-  if (currentActivity.category === undefined || task.value.trim() === "" || minuteInput.value === "" || secondInput.value === "") {
+  var task = document.getElementById('task-return');
+  if (currentActivity.category === undefined || task.value.trim() === '' || minuteInput.value === '' || secondInput.value === '') {
     addErrorMessage.classList.remove('hidden');
     task.classList.add('error-message');
     return false;
@@ -119,7 +121,7 @@ function updatePastActivities() {
   displayPastActivities();
 };
 
-function retrieveFromStorage(name) {
+function retrieveFromStorage() {
   var retrievedActivities = localStorage.getItem('pastActivities');
   pastActivities = JSON.parse(retrievedActivities);
 };
@@ -135,10 +137,10 @@ function revive(array) {
 };
 
 function runTimer() {
-  currentActivity.startTimer();
   var startTimerButton = document.querySelector('.start-time');
-  startTimerButton.disabled = true;
   var outputTime = document.querySelector('.time');
+  currentActivity.startTimer();
+  startTimerButton.disabled = true;
   var refresher = setInterval(function() {
     if (currentActivity.secondsLeft() < 0) {
       clearInterval(refresher);
@@ -166,5 +168,5 @@ function isNumber(event) {
   var charNum = String.fromCharCode(event.which);
   if (!(/[0-9]/.test(charNum))) {
     event.preventDefault();
-  }
+  };
 };
